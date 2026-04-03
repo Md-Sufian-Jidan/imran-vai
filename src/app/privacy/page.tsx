@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, Lock, Eye, FileText, Globe, Bell } from "lucide-react";
+import { ShieldCheck, Bell } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { getIconComponent } from "@/lib/iconMapper";
 import { privacySectionInfo } from "@/lib/commonLinks";

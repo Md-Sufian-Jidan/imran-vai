@@ -2,6 +2,17 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* To achieve that high-end "Studio" look seen in your references, we’ll move toward a Deep Emerald & Mint palette. This feels more sophisticated than a standard bright green and works perfectly with the "Before & After" concept.
+
+1. The Green Studio Color Palette
+Add these to your tailwind.config.ts or globals.css:
+
+Role	Color (OKLCH/Hex)	Description
+Primary	#064e3b (Emerald 900)	Deep, professional base green.
+Accent	#10b981 (Emerald 500)	Vibrant green for "After" highlights.
+Muted	#ecfdf5 (Emerald 50)	Soft mint for background sections.
+Surface	#022c22	Dark forest green for cards/badge */
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

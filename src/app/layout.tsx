@@ -18,8 +18,6 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-// ─── Site-wide constants (edit once here) ─────────────────────────────────────
-
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://thepixelverse.com";
 const SITE_NAME = "ThePixelVerse";
 const SITE_DESCRIPTION =
