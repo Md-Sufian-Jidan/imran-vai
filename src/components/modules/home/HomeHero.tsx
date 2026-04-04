@@ -8,7 +8,7 @@ import heroAbstract from "../../../assests/images/hero-abstract.jpg";
 import Image from "next/image";
 import Link from "next/link";
 
-const Hero = () => {
+export default function HomeHero () {
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
             {/* Background Image & Overlay */}
@@ -105,5 +105,3 @@ const Hero = () => {
         </section>
     );
 };
-
-export default Hero;

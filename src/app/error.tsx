@@ -2,8 +2,13 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { MoveLeft, RefreshCw, AlertCircle } from "lucide-react";
+import { MoveLeft, RefreshCw, AlertCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 export default function Error({
   error,
@@ -13,79 +18,89 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
-    <main className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden bg-background px-6">
+    <main className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#021a14] px-6">
       {/* Background Decorative Elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-[600px] pointer-events-none opacity-20">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/30 rounded-full blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/20 rounded-full blur-[120px]" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#10b981]/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#10b981]/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="relative z-10 max-w-2xl w-full text-center space-y-8 animate-fade-up">
-        {/* Error Icon/Status */}
+      <div className="relative z-10 max-w-2xl w-full text-center space-y-8">
+        {/* Error Icon */}
         <div className="flex justify-center">
           <div className="relative group">
-            <div className="absolute inset-0 bg-destructive/20 rounded-2xl blur-xl group-hover:bg-destructive/30 transition-colors duration-500" />
-            <div className="relative w-24 h-24 bg-card border border-border rounded-2xl flex items-center justify-center shadow-2xl">
-              <AlertCircle size={48} className="text-destructive animate-pulse" />
+            <div className="absolute inset-0 bg-red-500/20 rounded-2xl blur-xl" />
+            <div className="relative w-24 h-24 bg-[#022c22]/40 border border-[#10b981]/20 rounded-2xl flex items-center justify-center shadow-2xl">
+              <AlertCircle size={48} className="text-red-500 animate-pulse" />
             </div>
-            {/* Branded dot accent */}
-            <span className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-primary border-4 border-background animate-pulse-glow" />
+            <span className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-[#10b981] border-4 border-[#021a14]" />
           </div>
         </div>
 
         {/* Messaging */}
         <div className="space-y-4">
-          <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-            Something went <span className="text-primary italic">wrong.</span>
+          <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight text-[#ecfdf5]">
+            Something went <span className="text-[#10b981] italic">wrong.</span>
           </h1>
-          <p className="text-muted-foreground text-lg md:text-xl font-body max-w-lg mx-auto leading-relaxed">
-            An unexpected error occurred while processing your request. Our team has been notified.
+          <p className="text-[#ecfdf5]/60 text-lg max-w-lg mx-auto leading-relaxed">
+            An unexpected error occurred. You can try refreshing the page or check the details below.
           </p>
-          {error.digest && (
-            <p className="text-xs font-mono text-muted-foreground/60 bg-muted/50 py-1.5 px-3 rounded-full inline-block">
-              Error ID: {error.digest}
-            </p>
-          )}
+
+          {/* DEBUGGING SECTION: Shows the actual error message */}
+          <div className="mt-6 flex justify-center">
+            <Collapsible className="w-full max-w-md bg-[#022c22]/40 border border-red-500/20 rounded-xl overflow-hidden">
+              <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 text-xs font-mono text-red-400 hover:bg-red-500/5 transition-colors">
+                <span>VIEW ERROR DETAILS</span>
+                <ChevronDown size={14} />
+              </CollapsibleTrigger>
+              <CollapsibleContent className="px-4 pb-4 text-left">
+                <div className="p-3 bg-black/40 rounded border border-red-500/10">
+                  <p className="text-xs font-mono text-red-400 break-all leading-relaxed">
+                    <strong>Message:</strong> {error.message || "Unknown error"}
+                  </p>
+                  {error.digest && (
+                    <p className="text-[10px] font-mono text-[#ecfdf5]/40 mt-2">
+                      Digest: {error.digest}
+                    </p>
+                  )}
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
+          </div>
         </div>
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Button
             onClick={() => reset()}
-            size="lg"
-            className="h-14 px-8 text-base font-semibold font-heading group min-w-[180px] shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300"
+            className="h-12 px-8 bg-[#10b981] text-[#021a14] hover:bg-[#10b981]/90 font-bold rounded-full transition-all active:scale-95 shadow-lg shadow-[#10b981]/20"
           >
-            <RefreshCw className="mr-2 h-5 w-5 group-hover:rotate-180 transition-transform duration-500" />
+            <RefreshCw className="mr-2 h-4 w-4" />
             Try Again
           </Button>
 
           <Button
-            variant="outline"
-            size="lg"
             asChild
-            className="h-14 px-8 text-base font-semibold font-heading border-border/50 hover:border-primary/50 bg-card/50 backdrop-blur-sm transition-all duration-300 min-w-[180px]"
+            variant="outline"
+            className="h-12 px-8 border-[#10b981]/20 text-[#ecfdf5] hover:bg-[#10b981]/10 rounded-full transition-all"
           >
             <Link href="/">
-              <MoveLeft className="mr-2 h-5 w-5" />
+              <MoveLeft className="mr-2 h-4 w-4" />
               Back to Home
             </Link>
           </Button>
         </div>
-
-        {/* Footer help */}
-        <p className="pt-8 text-sm text-muted-foreground font-body">
-          Still having issues? <Link href="/contact" className="text-primary hover:underline font-medium">Contact Support</Link>
-        </p>
       </div>
 
-      {/* Decorative Grid Pattern Overlay */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
-        style={{ backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+      {/* Decorative Grid Pattern */}
+      <div
+        className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none"
+        style={{ backgroundImage: "radial-gradient(circle, #10b981 1px, transparent 1px)", backgroundSize: "32px 32px" }}
+      />
     </main>
   );
 }

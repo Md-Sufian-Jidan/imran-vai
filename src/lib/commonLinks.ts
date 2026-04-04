@@ -1,4 +1,4 @@
-import { Client, ContactInfo, FooterLink, PricingFeature, PricingPlan, PricingTable, PrivacyInfo, ProcessStep, Project, Service, SocialLink, Stat, TermsInfo, Testimonial } from "@/types/common.types";
+import { Client, ContactInfo, FooterLink, PricingFeature, PricingPlan, PricingTable, PrivacyInfo, ProcessStep, Project, Service, SocialLink, Stat, Steps, TermsInfo, Testimonial } from "@/types/common.types";
 import projectMeridian from "../assests/images/project-meridian.jpg";
 import projectVolta from "../assests/images/project-volta.jpg";
 import projectLuminar from "../assests/images/project-luminar.jpg";
@@ -359,6 +359,33 @@ export const clients: Client[] = [
     { name: "DataFlow", logo: "DataFlow" },
     { name: "PixelPerfect", logo: "PixelPerfect" },
     { name: "BrightPath", logo: "BrightPath" }
+];
+
+export const steps: Steps[] = [
+    {
+        icon: "Upload",
+        step: "01",
+        title: "Upload Your Images",
+        desc: "Send us your unedited images through our easy upload form or free trial page."
+    },
+    {
+        icon: "MessageSquare",
+        step: "02",
+        title: "Get Quick Reply",
+        desc: "We respond to any queries in less than 15 minutes with a detailed quote."
+    },
+    {
+        icon: "Download",
+        step: "03",
+        title: "Download Images",
+        desc: "We'll deliver a better version of your photos exactly as you want them."
+    },
+    {
+        icon: "CreditCard",
+        step: "04",
+        title: "Make Payment",
+        desc: "Pay after approval in your local currency — USD, Euro, GBP, CAD, AUD."
+    },
 ];
 
 // Footer links

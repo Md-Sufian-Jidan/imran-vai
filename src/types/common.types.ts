@@ -94,3 +94,10 @@ export interface TermsInfo {
     title: string;
     content: string;
 }
+
+export interface Steps {
+    step: string;
+    icon: string;
+    title: string;
+    desc: string;
+}

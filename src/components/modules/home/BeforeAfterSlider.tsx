@@ -10,7 +10,6 @@ interface BeforeAfterSliderProps {
     afterSrc: string | StaticImageData;
     beforeAlt?: string;
     afterAlt?: string;
-    /** Initial split position as a percentage (0–100). Default: 45 */
     initialPosition?: number;
     className?: string;
 }
@@ -106,8 +105,8 @@ export const BeforeAfterSlider = ({
                 <Image
                     src={beforeSrc}
                     alt={beforeAlt}
-                    className="object-cover"
-                    style={{ width: `${(100 / position) * 100}%`, maxWidth: "none" }}
+                    className="object-cover h-full"
+                    style={{ width: `${(100 / position) * 100}%`, maxWidth: "none"  }}
                     priority
                 />
                 {/* "Before" label */}
@@ -124,7 +123,7 @@ export const BeforeAfterSlider = ({
 
             {/* ── Divider line ── */}
             <div
-                className="absolute inset-y-0 z-20 w-px bg-white/60"
+                className="absolute inset-y-0 z-20 w-px bg-emerald-500"
                 style={{ left: `${position}%` }}
             />
 
@@ -138,13 +137,13 @@ export const BeforeAfterSlider = ({
           absolute top-1/2 z-30
           -translate-x-1/2 -translate-y-1/2
           w-12 h-12 rounded-full
-          bg-white shadow-2xl shadow-black/40
+          bg-emerald-700 shadow-2xl shadow-black/40
           flex items-center justify-center
-          border-2 border-white/80
+          border-2 border-emerald-800
         "
                 style={{ left: `${position}%` }}
             >
-                <MoveHorizontal size={18} className="text-gray-700" strokeWidth={2.5} />
+                <MoveHorizontal size={18} className="text-white" strokeWidth={2.5} />
             </motion.div>
 
             {/* ── Drag hint (fades out after interaction) ── */}

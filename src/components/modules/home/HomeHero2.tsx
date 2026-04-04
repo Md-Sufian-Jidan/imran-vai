@@ -32,7 +32,7 @@ const fadeUp: Variants = {
     show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
 };
 
-const Hero2 = () => {
+export default function HomeHero2 () {
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
 
@@ -257,5 +257,3 @@ const Hero2 = () => {
         </section>
     );
 };
-
-export default Hero2;

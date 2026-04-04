@@ -13,7 +13,7 @@ import Link from "next/link";
 import beforeImg from "../../../assests/images/about-team.jpg";
 import afterImg from "../../../assests/images/hero-abstract.jpg";
 
-export default function Hero1() {
+export default function HomeHero1() {
     const [sliderPos, setSliderPos] = useState(50);
     const containerRef = useRef<HTMLDivElement>(null);
 
