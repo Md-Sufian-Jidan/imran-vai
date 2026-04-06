@@ -28,18 +28,19 @@ const cardVariants: Variants = {
 
 export default function Services() {
     return (
-        <section className="bg-background relative overflow-hidden">
-            {/* Decorative background element */}
-            <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-primary/5 blur-[120px] -z-10 rounded-full" />
+        <section className="bg-[#FAFAFA] relative overflow-hidden font-jakarta">
+            {/* Soft Teal Accents (Replacing Emerald Glow) */}
+            <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-primary-teal/[0.03] blur-[120px] -z-10 rounded-full" />
+            <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-primary-teal/[0.03] blur-[100px] -z-10 rounded-full" />
 
-            <SectionWrapper>
+            <SectionWrapper containerClassName="px-6">
                 <SectionHeading
                     label="What We Do"
                     title="Services built for growth"
                     description="From strategy to execution, we deliver end-to-end creative solutions that transform brands and accelerate business growth."
                 />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-16">
                     {services.map((service, i) => {
                         const Icon = getIconComponent(service.icon);
 
@@ -52,30 +53,34 @@ export default function Services() {
                                 viewport={{ once: true, margin: "-50px" }}
                                 variants={cardVariants}
                             >
-                                <Link href={`${service.url}`} className="cursor-pointer">
-                                    <Card className="group relative h-full overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 cursor-default">
-                                        {/* Hover Spotlight Effect */}
-                                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <Link href={`${service.url}`} className="block h-full group">
+                                    <Card className="relative h-full overflow-hidden border-border bg-white transition-all duration-500 hover:border-primary-teal/40 hover:shadow-xl hover:shadow-primary-teal/[0.05]">
+
+                                        {/* Hover Spotlight Gradient - Teal */}
+                                        <div className="absolute inset-0 bg-gradient-to-br from-primary-teal/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                                         <CardHeader className="relative z-10 pb-2">
-                                            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-secondary border border-border group-hover:border-primary/20 group-hover:bg-primary/10 transition-all duration-300">
+                                            {/* Icon Container - Primary Teal Styling */}
+                                            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-muted/50 border border-border group-hover:border-primary-teal/30 group-hover:bg-primary-teal/10 transition-all duration-500">
                                                 <Icon
-                                                    className="text-muted-foreground group-hover:text-primary group-hover:scale-110 transition-all duration-300"
-                                                    size={22}
+                                                    className="text-[#999999] group-hover:text-primary-teal group-hover:scale-110 transition-all duration-500"
+                                                    size={24}
+                                                    strokeWidth={1.5}
                                                 />
                                             </div>
-                                            <CardTitle className="font-heading text-2xl font-bold tracking-tight text-foreground">
+                                            <CardTitle className="font-playfair text-2xl font-bold tracking-tight text-black group-hover:text-primary-teal transition-colors duration-300">
                                                 {service.title}
                                             </CardTitle>
                                         </CardHeader>
 
-                                        <CardContent className="relative z-10">
-                                            <p className="font-plus-jakarta text-muted-foreground leading-relaxed text-sm antialiased">
+                                        <CardContent className="relative z-10 pt-2">
+                                            {/* Description - Gray #999999 */}
+                                            <p className="text-[#999999] leading-relaxed text-sm antialiased group-hover:text-black/70 transition-colors duration-300">
                                                 {service.desc}
                                             </p>
 
-                                            {/* Bottom accent line */}
-                                            <div className="mt-6 h-1 w-0 bg-primary/40 transition-all duration-500 group-hover:w-full rounded-full" />
+                                            {/* Bottom accent line - Teal Animated */}
+                                            <div className="mt-8 h-[2px] w-0 bg-primary-teal opacity-0 transition-all duration-700 group-hover:w-full group-hover:opacity-100 rounded-full" />
                                         </CardContent>
                                     </Card>
                                 </Link>

@@ -1,9 +1,11 @@
-import { Client, ContactInfo, FooterLink, PricingFeature, PricingPlan, PricingTable, PrivacyInfo, ProcessStep, Project, Service, SocialLink, Stat, Steps, TermsInfo, Testimonial } from "@/types/common.types";
-import projectMeridian from "../assests/images/project-meridian.jpg";
-import projectVolta from "../assests/images/project-volta.jpg";
-import projectLuminar from "../assests/images/project-luminar.jpg";
-import projectArc from "../assests/images/project-arc.jpg";
-import projectNova from "../assests/images/project-nova.jpg";
+import { Client, ContactInfo, FAQ, FooterLink, PricingFeature, PricingPlan, PricingTable, PrivacyInfo, ProcessStep, Project, Service, ServiceStep, ServiceTech, SocialLink, Stat, Steps, TeamMember, TermsInfo, Testimonial } from "@/types/common.types";
+import projectMeridian from "../assets/images/project-meridian.jpg";
+import projectVolta from "../assets/images/project-volta.jpg";
+import projectLuminar from "../assets/images/project-luminar.jpg";
+import projectArc from "../assets/images/project-arc.jpg";
+import projectNova from "../assets/images/project-nova.jpg";
+import before from "../assets/images/about-team.jpg";
+import after from "../assets/images/hero-abstract.jpg";
 
 export const services: Service[] = [
     {
@@ -17,6 +19,8 @@ export const services: Service[] = [
             "Fast turnaround",
             "E-commerce ready images",
         ],
+        before,
+        after,
     },
     {
         icon: "Scissors",
@@ -29,6 +33,8 @@ export const services: Service[] = [
             "High-quality cutouts",
             "Bulk processing support",
         ],
+        before,
+        after,
     },
     {
         icon: "Scissors",
@@ -41,6 +47,8 @@ export const services: Service[] = [
             "Pixel-perfect edges",
             "Layered PSD delivery",
         ],
+        before,
+        after,
     },
     {
         icon: "Scissors",
@@ -53,6 +61,8 @@ export const services: Service[] = [
             "Multiple paths included",
             "Professional finishing",
         ],
+        before,
+        after,
     },
     {
         icon: "Layers",
@@ -65,6 +75,8 @@ export const services: Service[] = [
             "Layer-based workflow",
             "Advanced retouching ready",
         ],
+        before,
+        after,
     },
     {
         icon: "Image",
@@ -77,6 +89,8 @@ export const services: Service[] = [
             "Shadow preservation",
             "E-commerce optimized",
         ],
+        before,
+        after,
     },
     {
         icon: "Feather",
@@ -89,6 +103,8 @@ export const services: Service[] = [
             "Alpha channel masking",
             "High-detail output",
         ],
+        before,
+        after,
     },
     {
         icon: "Sun",
@@ -101,6 +117,8 @@ export const services: Service[] = [
             "Reflection shadow",
             "Custom shadow styling",
         ],
+        before,
+        after,
     },
     {
         icon: "Sparkles",
@@ -113,6 +131,8 @@ export const services: Service[] = [
             "Color correction",
             "High-end retouching",
         ],
+        before,
+        after,
     },
     {
         icon: "Palette",
@@ -125,6 +145,8 @@ export const services: Service[] = [
             "White balance correction",
             "Batch editing",
         ],
+        before,
+        after,
     },
     {
         icon: "Repeat",
@@ -137,6 +159,8 @@ export const services: Service[] = [
             "Professional clothing display",
             "E-commerce ready output",
         ],
+        before,
+        after,
     },
     {
         icon: "Crop",
@@ -149,6 +173,8 @@ export const services: Service[] = [
             "Platform optimization",
             "Bulk processing",
         ],
+        before,
+        after,
     },
     {
         icon: "PenTool",
@@ -161,6 +187,8 @@ export const services: Service[] = [
             "Logo recreation",
             "Print-ready files",
         ],
+        before,
+        after,
     },
     {
         icon: "Layers",
@@ -173,6 +201,8 @@ export const services: Service[] = [
             "Creative effects",
             "Advanced Photoshop work",
         ],
+        before,
+        after,
     },
     {
         icon: "Box",
@@ -185,6 +215,8 @@ export const services: Service[] = [
             "Shadow & reflection",
             "High conversion visuals",
         ],
+        before,
+        after,
     },
     {
         icon: "Sparkles",
@@ -197,6 +229,8 @@ export const services: Service[] = [
             "Lighting enhancement",
             "Professional grading",
         ],
+        before,
+        after,
     },
 ];
 
@@ -225,6 +259,7 @@ export const projects: Project[] = [
         ],
         desc: "Complete brand overhaul and digital platform for a fintech startup.",
         image: projectMeridian,
+        liveLink: "https://meridian-finance-clone.vercel.app/",
     },
 
     {
@@ -251,6 +286,7 @@ export const projects: Project[] = [
         ],
         desc: "Dashboard design and development for a renewable energy company.",
         image: projectVolta,
+        liveLink: "https://volta-energy-clone.vercel.app/",
     },
 
     {
@@ -277,6 +313,7 @@ export const projects: Project[] = [
         ],
         desc: "Visual identity system for a premium content production studio.",
         image: projectLuminar,
+        liveLink: "https://luminar-studios-clone.vercel.app/",
     },
 
     {
@@ -303,6 +340,7 @@ export const projects: Project[] = [
         ],
         desc: "Full e-commerce experience for a premium athletic wear brand.",
         image: projectArc,
+        liveLink: "https://arc-athletics-clone.vercel.app/",
     },
 
     {
@@ -329,6 +367,7 @@ export const projects: Project[] = [
         ],
         desc: "Product website and interface design for an AI SaaS platform.",
         image: projectNova,
+        liveLink: "https://nova-ai-clone.vercel.app/",
     },
 ];
 
@@ -362,30 +401,18 @@ export const clients: Client[] = [
 ];
 
 export const steps: Steps[] = [
-    {
-        icon: "Upload",
-        step: "01",
-        title: "Upload Your Images",
-        desc: "Send us your unedited images through our easy upload form or free trial page."
-    },
-    {
-        icon: "MessageSquare",
-        step: "02",
-        title: "Get Quick Reply",
-        desc: "We respond to any queries in less than 15 minutes with a detailed quote."
-    },
-    {
-        icon: "Download",
-        step: "03",
-        title: "Download Images",
-        desc: "We'll deliver a better version of your photos exactly as you want them."
-    },
-    {
-        icon: "CreditCard",
-        step: "04",
-        title: "Make Payment",
-        desc: "Pay after approval in your local currency — USD, Euro, GBP, CAD, AUD."
-    },
+    { icon: "Upload", step: "01", title: "Upload Your Images", desc: "Send us your unedited images through our easy upload form or free trial page." },
+    { icon: "MessageSquare", step: "02", title: "Get Quick Reply", desc: "We respond to any queries in less than 15 minutes with a detailed quote." },
+    { icon: "Download", step: "03", title: "Download Images", desc: "We'll deliver a better version of your photos exactly as you want them." },
+    { icon: "CreditCard", step: "04", title: "Make Payment", desc: "Pay after approval in your local currency — USD, Euro, GBP, CAD, AUD." },
+    { icon: "MessageSquare", step: "02", title: "Get Quick Reply", desc: "We respond to any queries in less than 15 minutes with a detailed quote." },
+];
+
+export const serviceSteps: ServiceStep[] = [
+    { title: "Discovery & Strategy", desc: "We dive deep into your brand, goals, and target audience to create a data-driven roadmap for success.", icon: "Search" },
+    { title: "Design & Experience", desc: "Our creatives craft intuitive, high-fidelity designs that prioritize user experience and brand identity.", icon: "PenTool" },
+    { title: "Development & Build", desc: "Using the MERN stack and Next.js, we transform designs into scalable, high-performance digital products.", icon: "Code2" },
+    { title: "Launch & Optimization", desc: "We deploy your project with a focus on speed and SEO, ensuring a seamless entry into the market.", icon: "Rocket" },
 ];
 
 // Footer links
@@ -426,42 +453,27 @@ export const values = [
     { icon: "Users", title: "Client Partners", desc: "We work alongside you as dedicated partners invested in your success." },
 ];
 
-export const team = [
-    { name: "Alex Rivera", role: "Creative Director", initial: "AR" },
-    { name: "Jordan Kim", role: "Lead Designer", initial: "JK" },
-    { name: "Mia Thompson", role: "Strategy Lead", initial: "MT" },
-    { name: "Sam Patel", role: "Tech Director", initial: "SP" },
+export const teamMembers: TeamMember[] = [
+    { name: "Imran Hossain", role: "Graphic Designer", designation: "CEO & Founder", initial: "IH", },
+    { name: "Md Abu Sufian Jidan", role: "Junior Web Developer", designation: "Software Engineer", initial: "SJ", },
+    { name: "Sarah Jenkins", role: "UI/UX Designer", designation: "Product Lead", initial: "SJ", },
+    { name: "Alex River", role: "MERN Stack Developer", designation: "Backend Engineer", initial: "AR", },
 ];
 
 export const stats: Stat[] = [
-    { number: "150+", label: "Projects Delivered" },
-    { number: "50+", label: "Happy Clients" },
-    { number: "12", label: "Awards Won" },
-    { number: "5+", label: "Years Experience" },
+    { number: "150+", label: "Projects Delivered", sub: "Global Reach" },
+    { number: "50+", label: "Happy Clients", sub: "Trusted Partner" },
+    { number: "12", label: "Awards Won", sub: "Design Excellence" },
+    { number: "05+", label: "Years Experience", sub: "Industry Experts" },
 ];
 
 // Contact page data
 
 export const contactInfo: ContactInfo[] = [
+    { icon: "Mail", label: "Email", value: "hello@thepixelverse.com", href: "mailto:hello@thepixelverse.com", color: "bg-blue-500/10 text-blue-500" },
+    { icon: "Phone", label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567", color: "bg-green-500/10 text-green-500" },
     {
-        icon: "Mail",
-        label: "Email",
-        value: "hello@thepixelverse.com",
-        href: "mailto:hello@thepixelverse.com",
-        color: "bg-blue-500/10 text-blue-500"
-    },
-    {
-        icon: "Phone",
-        label: "Phone",
-        value: "+1 (555) 123-4567",
-        href: "tel:+15551234567",
-        color: "bg-green-500/10 text-green-500"
-    },
-    {
-        icon: "MapPin",
-        label: "Location",
-        value: "San Francisco, CA",
-        href: "https://maps.google.com/?q=San+Francisco,CA",
+        icon: "MapPin", label: "Location", value: "San Francisco, CA", href: "https://maps.google.com/?q=San+Francisco,CA",
         color: "bg-purple-500/10 text-purple-500"
     },
 ];
@@ -478,27 +490,9 @@ export const pricingTable: PricingTable[] = [
 ];
 
 export const pricingPlans: PricingPlan[] = [
-    {
-        name: "Basic",
-        price: "0.39",
-        description: "Ideal for simple shapes with straight edges.",
-        features: ["Single Path", "Straight Edges", "White Background", "Natural Shadow"],
-        popular: false,
-    },
-    {
-        name: "Standard",
-        price: "0.75",
-        description: "Best for apparel, shoes, and curved products.",
-        features: ["Multiple Paths", "Curved Edges", "Color Correction", "Ghost Mannequin"],
-        popular: true,
-    },
-    {
-        name: "Premium",
-        price: "2.50",
-        description: "For complex items like jewelry and machinery.",
-        features: ["Intricate Detailing", "Hair Masking", "High-End Retouching", "Reflection Shadow"],
-        popular: false,
-    },
+    { name: "Basic", price: "0.39", description: "Ideal for simple shapes with straight edges.", features: ["Single Path", "Straight Edges", "White Background", "Natural Shadow"], popular: false, },
+    { name: "Standard", price: "0.75", description: "Best for apparel, shoes, and curved products.", features: ["Multiple Paths", "Curved Edges", "Color Correction", "Ghost Mannequin"], popular: true, },
+    { name: "Premium", price: "2.50", description: "For complex items like jewelry and machinery.", features: ["Intricate Detailing", "Hair Masking", "High-End Retouching", "Reflection Shadow"], popular: false, },
 ];
 
 export const pricingFeatures: PricingFeature[] = [
@@ -554,4 +548,34 @@ export const termSections: TermsInfo[] = [
         icon: "Ban",
         content: "You may not use any code, designs, or assets from this website for commercial purposes without explicit permission. Reverse-engineering or scraping this site is strictly prohibited.",
     },
+];
+
+export const serviceTechnologies: ServiceTech[] = [
+    { name: "Next.js", category: "Frontend", icon: "Globe" },
+    { name: "React", category: "Library", icon: "Layers" },
+    { name: "Node.js", category: "Backend", icon: "Cpu" },
+    { name: "MongoDB", category: "Database", icon: "Database" },
+    { name: "TypeScript", category: "Language", icon: "Code2" },
+    { name: "Tailwind CSS", category: "Styling", icon: "Zap" },
+    { name: "Prisma", category: "ORM", icon: "Infinity" },
+    { name: "Framer Motion", category: "Animation", icon: "Smartphone" },
+];
+
+export const faqs: FAQ[] = [
+    {
+        question: "How long does a typical project take?",
+        answer: "Timeline varies depending on complexity. A standard landing page takes 2-3 weeks, while a full-scale MERN stack application typically spans 6-10 weeks from discovery to launch."
+    },
+    {
+        question: "Do you provide post-launch support?",
+        answer: "Yes, we offer flexible maintenance packages. Whether it's security updates, performance optimization, or adding new features, we ensure your digital product stays ahead of the curve."
+    },
+    {
+        question: "Will my website be SEO friendly?",
+        answer: "Absolutely. We build with Next.js which provides superior SSR (Server Side Rendering) capabilities. Combined with clean semantic HTML and optimized metadata, your site is built to rank."
+    },
+    {
+        question: "Can you work with my existing brand guidelines?",
+        answer: "We love collaborating with established brands. Our design team will strictly follow your existing style guides while looking for ways to elevate the digital experience."
+    }
 ];

@@ -6,7 +6,7 @@ import Testimonials from "@/components/modules/home/Testimonials";
 import CTA from "@/components/modules/home/CTA";
 import HomeHero3 from "@/components/modules/home/HomeHero3";
 import HowItWorks from "@/components/modules/home/HowItWorks";
-import ServicesPreview from "@/components/modules/home/ServicesPreview";
+// import ServicesPreview from "@/components/modules/home/ServicesPreview";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <HomeHero3 />
       <Clients />
       <HowItWorks />
-      <ServicesPreview />
+      {/* <ServicesPreview /> */}
       <Services />
       <Portfolio />
       <Process />

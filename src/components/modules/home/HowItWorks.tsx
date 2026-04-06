@@ -8,7 +8,7 @@ import { getIconComponent } from "@/lib/iconMapper";
 
 export default function HowItWorks() {
     return (
-        <section className="py-24 bg-[#021a14]">
+        <section className="py-24 bg-white">
             <div className="container mx-auto px-6">
                 <SectionHeading
                     label="Process"
@@ -27,36 +27,36 @@ export default function HowItWorks() {
                                 whileInView="visible"
                                 viewport={{ once: true }}
                                 variants={fadeUp}
-                                // Individual border and background colors
-                                className="relative p-8 rounded-2xl border border-[#10b981]/10 bg-[#022c22]/30 backdrop-blur-sm hover:border-[#10b981]/40 transition-all duration-500 group"
+                                // Updated to light border and subtle muted background
+                                className="relative p-8 rounded-2xl border border-border bg-muted/30 backdrop-blur-sm hover:border-primary-teal/40 transition-all duration-500 group"
                             >
-                                {/* Step Icon Box - Individual Emerald Styling */}
-                                <div className="w-14 h-14 rounded-xl bg-[#10b981]/10 flex items-center justify-center mb-6 group-hover:bg-[#10b981] transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.4)]">
+                                {/* Step Icon Box - Teal Accents */}
+                                <div className="w-14 h-14 rounded-xl bg-primary-teal/10 flex items-center justify-center mb-6 group-hover:bg-primary-teal transition-all duration-300 shadow-[0_0_15px_rgba(24,124,139,0.05)] group-hover:shadow-[0_0_25px_rgba(24,124,139,0.3)]">
                                     <Icon
-                                        className="text-[#10b981] group-hover:text-[#021a14] transition-colors"
+                                        className="text-primary-teal group-hover:text-white transition-colors"
                                         size={26}
                                     />
                                 </div>
 
                                 <div className="space-y-3">
-                                    {/* Individual Step Label Color */}
-                                    <span className="text-xs font-bold text-[#10b981]/60 uppercase tracking-[0.2em] block">
+                                    {/* Step Label - Gray (#999999) */}
+                                    <span className="text-xs font-bold text-[#999999] uppercase tracking-[0.2em] block">
                                         Step {step.step}
                                     </span>
 
-                                    {/* Individual Heading Color (Emerald-50 equivalent) */}
-                                    <h3 className="font-heading font-semibold text-xl text-[#ecfdf5]">
+                                    {/* Heading - Black */}
+                                    <h3 className="font-heading font-semibold text-xl text-black">
                                         {step.title}
                                     </h3>
 
-                                    {/* Individual Description Color */}
-                                    <p className="text-[#ecfdf5]/60 text-sm leading-relaxed group-hover:text-[#ecfdf5]/90 transition-colors">
+                                    {/* Description - Muted Gray */}
+                                    <p className="text-[#999999] text-sm leading-relaxed group-hover:text-black/80 transition-colors">
                                         {step.desc}
                                     </p>
                                 </div>
 
-                                {/* Decorative Corner Glow */}
-                                <div className="absolute -right-2 -top-2 w-16 h-16 bg-[#10b981]/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                {/* Decorative Corner Glow - Teal */}
+                                <div className="absolute -right-2 -top-2 w-16 h-16 bg-primary-teal/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                             </motion.div>
                         )
                     })}

@@ -58,7 +58,6 @@ export default function Testimonials() {
         }
     };
 
-    // Keyboard
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
             if (e.key === "ArrowLeft") prev();
@@ -85,7 +84,7 @@ export default function Testimonials() {
     };
 
     return (
-        <SectionWrapper className="bg-card/50">
+        <SectionWrapper className="bg-white" containerClassName="px-6">
             <SectionHeading
                 label="Testimonials"
                 title="What our clients say"
@@ -115,16 +114,16 @@ export default function Testimonials() {
                             animate="center"
                             exit="exit"
                             transition={{ duration: 0.38, ease: [0.32, 0.72, 0, 1] }}
-                            className="bg-card border border-border rounded-2xl p-8 md:p-12 relative"
+                            className="bg-white border border-border rounded-2xl p-8 md:p-12 relative shadow-sm"
                         >
-                            {/* Large decorative quote */}
+                            {/* Decorative Quote - Primary Teal */}
                             <Quote
                                 size={64}
-                                className="absolute top-6 right-8 text-primary/8 rotate-180 pointer-events-none"
+                                className="absolute top-6 right-8 text-primary-teal/5 rotate-180 pointer-events-none"
                                 aria-hidden="true"
                             />
 
-                            {/* Stars */}
+                            {/* Stars - Primary Teal */}
                             <div className="flex gap-1 mb-6" aria-label={`${t.rating} out of 5 stars`}>
                                 {Array.from({ length: 5 }).map((_, j) => (
                                     <Star
@@ -133,34 +132,34 @@ export default function Testimonials() {
                                         className={cn(
                                             "transition-colors",
                                             j < t.rating
-                                                ? "text-primary fill-primary"
+                                                ? "text-primary-teal fill-primary-teal"
                                                 : "text-muted-foreground/30 fill-muted-foreground/10"
                                         )}
                                     />
                                 ))}
                             </div>
 
-                            {/* Quote text */}
-                            <blockquote className="text-foreground text-lg md:text-xl leading-relaxed mb-8 font-body">
+                            {/* Quote text - Black */}
+                            <blockquote className="text-black text-lg md:text-xl leading-relaxed mb-8 font-body font-medium italic">
                                 &ldquo;{t.text}&rdquo;
                             </blockquote>
 
                             {/* Author */}
                             <div className="flex items-center gap-4">
-                                {/* Avatar */}
+                                {/* Avatar - Primary Teal Theme */}
                                 <div
-                                    className="w-11 h-11 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center shrink-0"
+                                    className="w-11 h-11 rounded-full bg-primary-teal/10 border border-primary-teal/20 flex items-center justify-center shrink-0"
                                     aria-hidden="true"
                                 >
-                                    <span className="font-heading font-semibold text-primary text-sm">
+                                    <span className="font-heading font-semibold text-primary-teal text-sm">
                                         {getInitials(t.name)}
                                     </span>
                                 </div>
                                 <div>
-                                    <p className="font-heading font-semibold text-foreground leading-tight">
+                                    <p className="font-heading font-semibold text-black leading-tight">
                                         {t.name}
                                     </p>
-                                    <p className="text-muted-foreground text-sm mt-0.5">{t.role}</p>
+                                    <p className="text-[#999999] text-sm mt-0.5">{t.role}</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -169,7 +168,7 @@ export default function Testimonials() {
 
                 {/* Controls row */}
                 <div className="flex items-center justify-between mt-8">
-                    {/* Dot indicators */}
+                    {/* Dot indicators - Primary Teal */}
                     <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial navigation">
                         {testimonials.map((_, i) => (
                             <button
@@ -179,10 +178,10 @@ export default function Testimonials() {
                                 aria-label={`Go to testimonial ${i + 1}`}
                                 onClick={() => go(i, i > current ? 1 : -1)}
                                 className={cn(
-                                    "rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary",
+                                    "rounded-full transition-all duration-300",
                                     i === current
-                                        ? "w-6 h-2 bg-primary"
-                                        : "w-2 h-2 bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                                        ? "w-6 h-2 bg-primary-teal"
+                                        : "w-2 h-2 bg-muted-foreground/30 hover:bg-primary-teal/40"
                                 )}
                             />
                         ))}
@@ -190,21 +189,20 @@ export default function Testimonials() {
 
                     {/* Arrow buttons */}
                     <div className="flex items-center gap-2">
-                        {/* Progress ring around Next button */}
                         <button
                             onClick={prev}
                             aria-label="Previous testimonial"
                             className={cn(
                                 "w-10 h-10 rounded-full border border-border flex items-center justify-center",
-                                "text-muted-foreground hover:text-foreground hover:border-primary/50",
-                                "transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                                "text-[#999999] hover:text-black hover:border-primary-teal/50",
+                                "transition-all duration-200"
                             )}
                         >
                             <ChevronLeft size={18} />
                         </button>
 
                         <div className="relative w-10 h-10">
-                            {/* SVG autoplay progress ring */}
+                            {/* SVG autoplay progress ring - Primary Teal */}
                             {!isPaused && (
                                 <svg
                                     className="absolute inset-0 -rotate-90"
@@ -214,7 +212,8 @@ export default function Testimonials() {
                                     <circle
                                         cx="20" cy="20" r="18"
                                         fill="none"
-                                        stroke="hsl(var(--primary))"
+                                        stroke="var(--primary-teal)"
+                                        className="stroke-primary-teal"
                                         strokeWidth="2"
                                         strokeDasharray={`${2 * Math.PI * 18}`}
                                         strokeDashoffset="0"
@@ -232,8 +231,8 @@ export default function Testimonials() {
                                 aria-label="Next testimonial"
                                 className={cn(
                                     "absolute inset-0 rounded-full border border-border flex items-center justify-center",
-                                    "text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-primary/5",
-                                    "transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                                    "text-[#999999] hover:text-black hover:border-primary-teal/50 hover:bg-primary-teal/5",
+                                    "transition-all duration-200"
                                 )}
                             >
                                 <ChevronRight size={18} />
@@ -243,13 +242,12 @@ export default function Testimonials() {
                 </div>
             </div>
 
-            {/* Keyframe for the progress ring */}
             <style>{`
-        @keyframes progress-drain {
-          from { stroke-dashoffset: 0; }
-          to   { stroke-dashoffset: ${2 * Math.PI * 18}; }
-        }
-      `}</style>
+                @keyframes progress-drain {
+                  from { stroke-dashoffset: 0; }
+                  to   { stroke-dashoffset: ${2 * Math.PI * 18}; }
+                }
+            `}</style>
         </SectionWrapper>
     );
-};
+}

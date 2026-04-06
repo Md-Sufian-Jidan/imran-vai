@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, ChevronRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import heroAbstract from "../../../assests/images/hero-abstract.jpg";
+import heroAbstract from "../../../assets/images/hero-abstract.jpg";
 import Image from "next/image";
 import Link from "next/link";
 

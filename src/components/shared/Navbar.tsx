@@ -1,162 +1,205 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, Zap } from "lucide-react";
+import { Menu, X, Zap, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/navLinks";
 import { getIconComponent } from "@/lib/iconMapper";
 
 const Navbar = () => {
+    const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
-        window.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    // Close mobile menu on route change
+    useEffect(() => setOpen(false), [pathname]);
 
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-                scrolled
-                    ? "bg-[#021a14]/80 backdrop-blur-xl border-b border-emerald-500/10 py-3 shadow-2xl shadow-emerald-950/20"
-                    : "bg-transparent py-5"
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4",
+                scrolled ? "top-4" : "top-0"
             )}
         >
-            <div className="container mx-auto flex items-center justify-between px-5 max-w-7xl">
-                {/* Logo */}
-                <Link href="/" className="flex items-center gap-2 group relative z-10">
-                    <div className="w-9 h-9 rounded-xl bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:rotate-12 transition-transform">
-                        <Zap size={20} className="text-[#021a14] fill-current" />
-                    </div>
-                    <span className="font-heading font-bold text-xl tracking-tight text-emerald-50">
-                        ThePixel<span className="text-emerald-500">Verse</span>
-                    </span>
-                </Link>
+            <nav
+                className={cn(
+                    "container mx-auto transition-all duration-500 rounded-2xl border",
+                    scrolled
+                        ? "bg-white/80 backdrop-blur-xl border-border shadow-lg py-2" // Changed to white bg, default border, simple shadow
+                        : "bg-transparent border-transparent py-5"
+                )}
+            >
+                <div className="flex items-center justify-between px-4">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center gap-2 group relative z-50">
+                        <div className="w-10 h-10 rounded-xl bg-primary-teal flex items-center justify-center transition-transform group-hover:rotate-12"> {/* Removed specific glow shadow */}
+                            <Zap size={22} className="text-white fill-current" /> {/* Icon is white against primary (black) bg */}
+                        </div>
+                        <span className="font-heading font-bold text-xl tracking-tight text-black"> {/* Logo text is black */}
+                            ThePixel<span className="text-primary-teal">Verse</span> {/* Highlight uses Teal */}
+                        </span>
+                    </Link>
 
-                {/* Desktop Navigation */}
-                <nav className="hidden md:block">
-                    <NavigationMenu>
-                        <NavigationMenuList className="gap-1 bg-emerald-950/20 p-1 rounded-full border border-emerald-500/10 backdrop-blur-sm">
-                            {navLinks.map((item) => {
-                                const Icon = getIconComponent(item.icon);
-                                const isActive = pathname === item.href;
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex items-center gap-1 bg-muted p-1 rounded-xl border border-border backdrop-blur-sm"> {/* Swapped dark emerald to Muted (f4f4f5) */}
+                        {navLinks.map((item) => {
+                            const Icon = getIconComponent(item.icon);
+                            const isActive = pathname === item.href;
 
-                                if (item.isDropdown) {
-                                    return (
-                                        <NavigationMenuItem key={item.title}>
-                                            <NavigationMenuTrigger
+                            return (
+                                <div
+                                    key={item.title}
+                                    className="relative"
+                                    onMouseEnter={() =>
+                                        item.isDropdown && setActiveDropdown(item.title)
+                                    }
+                                    onMouseLeave={() => setActiveDropdown(null)}
+                                >
+                                    <Link
+                                        href={item.href}
+                                        className={cn(
+                                            "flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300",
+                                            isActive
+                                                ? "bg-primary text-primary-teal" // Active item: Black background, white text
+                                                : "text-black hover:text-primary-teal hover:bg-white/50" // Inactive: Black text, hovers to Teal
+                                        )}
+                                    >
+                                        <Icon
+                                            size={14}
+                                            className={cn(isActive ? "opacity-100" : "opacity-60")}
+                                        />
+                                        {item.title}
+                                        {item.isDropdown && (
+                                            <ChevronDown
+                                                size={12}
                                                 className={cn(
-                                                    "h-10 px-4 rounded-full bg-transparent hover:bg-emerald-500/10 text-emerald-50/70 hover:text-emerald-400 data-[state=open]:bg-emerald-500/10",
-                                                    isActive && "text-emerald-400"
+                                                    "transition-transform",
+                                                    activeDropdown === item.title && "rotate-180"
                                                 )}
+                                            />
+                                        )}
+                                    </Link>
+
+                                    {/* Dropdown Megamenu */}
+                                    <AnimatePresence>
+                                        {item.isDropdown && activeDropdown === item.title && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: 10 }}
+                                                className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px]"
                                             >
-                                                <Icon size={14} className="mr-2 opacity-60" />
-                                                {item.title}
-                                            </NavigationMenuTrigger>
-                                            <NavigationMenuContent>
-                                                <ul className="grid w-[700px] gap-2 p-6 md:grid-cols-2 lg:grid-cols-3 bg-[#021a14] border border-emerald-500/10 backdrop-blur-md">
-                                                    <li className="col-span-full mb-2 border-b border-emerald-500/10 pb-2">
-                                                        <p className="text-xs font-bold uppercase tracking-widest text-emerald-500/60">Expert Photo Editing</p>
-                                                    </li>
+                                                <div className="bg-white border border-border rounded-xl shadow-2xl p-6 grid grid-cols-2 gap-x-8 gap-y-2"> {/* White background dropdown */}
+                                                    <div className="col-span-2 mb-2 border-b border-border pb-2">
+                                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-teal"> {/* Header is Teal */}
+                                                            Premium Photo Services
+                                                        </p>
+                                                    </div>
                                                     {item.subServices?.map((sub) => (
-                                                        <li key={sub.href}>
-                                                            <NavigationMenuLink asChild>
-                                                                <Link
-                                                                    href={sub.href}
-                                                                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-500/5 group"
-                                                                >
-                                                                    <div className="text-sm font-semibold leading-none text-emerald-50 group-hover:text-emerald-400 transition-colors">{sub.title}</div>
-                                                                </Link>
-                                                            </NavigationMenuLink>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </NavigationMenuContent>
-                                        </NavigationMenuItem>
-                                    );
-                                }
-
-                                return (
-                                    <NavigationMenuItem key={item.href}>
-                                        <Link href={item.href} legacyBehavior passHref>
-                                            <NavigationMenuLink
-                                                className={cn(
-                                                    "group inline-flex h-10 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-all hover:bg-emerald-500/10 hover:text-emerald-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50",
-                                                    isActive ? "bg-emerald-500/10 text-emerald-400 shadow-sm" : "text-emerald-50/60"
-                                                )}
-                                            >
-                                                <Icon size={14} className={cn("mr-2", isActive ? "opacity-100" : "opacity-60")} />
-                                                {item.title}
-                                            </NavigationMenuLink>
-                                        </Link>
-                                    </NavigationMenuItem>
-                                );
-                            })}
-                        </NavigationMenuList>
-                    </NavigationMenu>
-                </nav>
-
-                {/* Right Side Actions */}
-                <div className="flex items-center gap-3">
-                    <Button asChild variant="default" size="sm" className="hidden md:flex rounded-full px-6 font-bold h-10 bg-emerald-500 text-[#021a14] hover:bg-emerald-400 shadow-lg shadow-emerald-500/20 transition-transform active:scale-95 border-none">
-                        <Link href="/contact">Get Started</Link>
-                    </Button>
-
-                    <Sheet>
-                        <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon" className="md:hidden rounded-xl bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20">
-                                <Menu size={30} />
-                            </Button>
-                        </SheetTrigger>
-                        <SheetContent side="right" className="w-full sm:w-[400px] overflow-y-auto pt-12 bg-[#021a14] border-emerald-500/10">
-                            <SheetTitle className="text-left mb-4 px-2 text-2xl font-heading font-bold mx-3 text-emerald-50">Menu</SheetTitle>
-                            <div className="flex flex-col gap-2">
-                                {navLinks.map((link) => {
-                                    const Icon = getIconComponent(link.icon);
-                                    const isActive = pathname === link.href;
-
-                                    return (
-                                        <div key={link.title}>
-                                            <Link
-                                                href={link.href}
-                                                className={cn(
-                                                    "flex items-center gap-4 px-4 py-3 rounded-xl text-lg font-medium transition-all mx-3",
-                                                    isActive ? "bg-emerald-500/10 text-emerald-400" : "text-emerald-50/70 hover:bg-emerald-500/5 hover:text-emerald-400"
-                                                )}
-                                            >
-                                                <Icon size={20} />
-                                                {link.title}
-                                            </Link>
-                                            {link.isDropdown && (
-                                                <div className="ml-10 mt-2 grid gap-1 border-l-2 border-emerald-500/20 pl-4">
-                                                    {link.subServices?.map((sub) => (
                                                         <Link
                                                             key={sub.href}
                                                             href={sub.href}
-                                                            className="py-2 text-sm text-emerald-50/50 hover:text-emerald-400 transition-colors"
+                                                            className="text-sm py-2 text-[#999999] hover:text-primary-teal transition-colors flex items-center gap-2 group/item" // Links are gray (#999999), hover to Teal
                                                         >
+                                                            <div className="w-1 h-1 rounded-full bg-primary-teal opacity-0 group-hover/item:opacity-100 transition-all" /> {/* Dot is Teal */}
                                                             {sub.title}
                                                         </Link>
                                                     ))}
                                                 </div>
-                                            )}
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </SheetContent>
-                    </Sheet>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* CTA & Mobile Toggle */}
+                    <div className="flex items-center gap-4">
+                        <Button
+                            asChild
+                            className="hidden md:flex rounded-xl px-6 border border-primary-teal bg-primary-foreground text-black hover:bg-primary-teal hover:text-white h-11 font-bold" // Main CTA: Black, hovers to Teal
+                        >
+                            <Link href="/contact">Get Started</Link>
+                        </Button>
+
+                        <button
+                            className="md:hidden z-50 p-2 text-black" // Hamburger is black
+                            onClick={() => setOpen(!open)}
+                        >
+                            {open ? <X size={28} /> : <Menu size={28} />}
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </nav>
+
+            {/* Mobile Menu Overlay */}
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "100vh" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="fixed inset-0 bg-white z-40 flex flex-col pt-24 px-6 overflow-y-auto" // White background overlay
+                    >
+                        <div className="flex flex-col gap-2">
+                            {navLinks.map((link, i) => {
+                                const Icon = getIconComponent(link.icon);
+                                return (
+                                    <motion.div
+                                        key={link.title}
+                                        initial={{ x: -20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: i * 0.1 }}
+                                    >
+                                        <Link
+                                            href={link.href}
+                                            className="flex items-center gap-4 py-4 text-2xl font-bold text-black border-b border-border" // Text is black
+                                        >
+                                            <Icon className="text-primary-teal" /> {/* Icons are Teal */}
+                                            {link.title}
+                                        </Link>
+                                        {link.isDropdown && (
+                                            <div className="grid grid-cols-1 gap-2 py-4 pl-10">
+                                                {link.subServices?.slice(0, 6).map((sub) => (
+                                                    <Link
+                                                        key={sub.title}
+                                                        href={sub.href}
+                                                        className="text-[#999999] py-1" // Sub-services are gray
+                                                    >
+                                                        {sub.title}
+                                                    </Link>
+                                                ))}
+                                                <Link
+                                                    href="/services"
+                                                    className="text-primary-teal text-sm font-bold mt-2" // "View all" is Teal
+                                                >
+                                                    View all services →
+                                                </Link>
+                                            </div>
+                                        )}
+                                    </motion.div>
+                                );
+                            })}
+                            <Button className="mt-8 w-full h-14 rounded-2xl bg-primary text-white text-lg font-bold hover:bg-primary-teal"> {/* Mobile CTA: Black, hovers to Teal */}
+                                Get a Quote
+                            </Button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     );
 };

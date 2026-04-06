@@ -10,8 +10,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Images (Replace with your emerald-themed retouching samples)
-import beforeImg from "../../../assests/images/about-team.jpg";
-import afterImg from "../../../assests/images/hero-abstract.jpg";
+import beforeImg from "../../../assets/images/about-team.jpg";
+import afterImg from "../../../assets/images/hero-abstract.jpg";
 
 export default function HomeHero1() {
     const [sliderPos, setSliderPos] = useState(50);

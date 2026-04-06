@@ -1,101 +1,54 @@
 "use client";
 
-import { ArrowLeft, CheckCircle2, LoaderIcon } from "lucide-react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { projects } from "@/lib/commonLinks";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import Image from "next/image";
+import PortfolioDetailsHero from "@/components/modules/portfolioDetails/PortfolioDetailsHero";
+import PortfolioProblemAndSolution from "@/components/modules/portfolioDetails/PortfolioProblemAndSolution";
+import PortfolioProcess from "@/components/modules/portfolioDetails/PortfolioProcess";
+import PortfolioResults from "@/components/modules/portfolioDetails/PortfolioResults";
 
 export default async function PortfolioDetails({ params }: { params: { id: string } }) {
+
     const { id } = await params;
-    console.log(id);
     const study = projects.find((p) => p.id === id);
 
+    if (!study) return null;
+
     return (
-        <main>
-            <section className="pt-32 pb-12 px-6 md:px-12 lg:px-20">
-                <div className="container-narrow">
-                    <Link href="/portfolio" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8">
-                        <ArrowLeft size={16} /> Back to Portfolio
-                    </Link>
-                    <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                        <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">{study?.category}</span>
-                        <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6">{study?.title}</h1>
-                        <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">{study?.overview}</p>
-                    </motion.div>
-                </div>
-            </section>
+        <main className="bg-white min-h-screen">
+            {/* ── Header Section ── */}
+            <PortfolioDetailsHero study={study} />
 
-            {/* Hero visual */}
-            <SectionWrapper className="pt-0">
-                <div className={`rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 border border-border aspect-[16/7] flex items-center justify-center`}>
-                    {study?.image ? (
-                        <Image
-                            src={study.image}
-                            alt={study.title}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                        />
-                    ) : (
-                        <span className="font-heading text-4xl md:text-6xl font-bold text-foreground/20">{study?.title}</span>
-                    )}
-                </div>
+            {/* ── Full-Width Hero Visual ── */}
+
+            <SectionWrapper containerClassName="px-6">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                    className="relative aspect-[16/8] rounded-[3rem] overflow-hidden bg-slate-100 border border-border shadow-2xl"
+                >
+                    <Image
+                        src={study.image}
+                        alt={study.title}
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                </motion.div>
             </SectionWrapper>
 
-            {/* Problem & Solution */}
-            <SectionWrapper>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div>
-                        <h2 className="font-heading text-2xl font-bold text-foreground mb-4">The Challenge</h2>
-                        <p className="text-muted-foreground leading-relaxed">{study?.problem}</p>
-                    </div>
-                    <div>
-                        <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Our Solution</h2>
-                        <p className="text-muted-foreground leading-relaxed">{study?.solution}</p>
-                    </div>
-                </div>
-            </SectionWrapper>
+            {/* ── Problem & Solution (Grid) ── */}
+            <PortfolioProblemAndSolution study={study} />
 
-            {/* Process */}
-            <SectionWrapper className="bg-card/50">
-                <h2 className="font-heading text-2xl font-bold text-foreground mb-8">Process</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {study?.process.map((step, i) => (
-                        <motion.div
-                            key={step}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.5 }}
-                            className="flex items-start gap-3"
-                        >
-                            <CheckCircle2 size={20} className="text-primary mt-0.5 flex-shrink-0" />
-                            <span className="text-foreground">{step}</span>
-                        </motion.div>
-                    ))}
-                </div>
-            </SectionWrapper>
+            {/* ── Process Roadmap ── */}
+            <PortfolioProcess study={study} />
 
-            {/* Results */}
-            <SectionWrapper>
-                <h2 className="font-heading text-2xl font-bold text-foreground mb-8">Results</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {study?.results.map((r, i) => (
-                        <motion.div
-                            key={r.label}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.5 }}
-                            className="bg-card rounded-xl border border-border p-6 text-center"
-                        >
-                            <span className="font-heading text-3xl font-bold text-gradient block">{r.value}</span>
-                            <span className="text-muted-foreground text-sm mt-2 block">{r.label}</span>
-                        </motion.div>
-                    ))}
-                </div>
-            </SectionWrapper>
+            {/* ── Quantifiable Results ── */}
+            <PortfolioResults study={study} />
         </main>
     );
 }

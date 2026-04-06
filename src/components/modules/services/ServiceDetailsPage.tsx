@@ -1,165 +1,144 @@
 "use client";
 
-import Link from "next/link";
-import { Check, ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import SectionWrapper from "@/components/shared/SectionWrapper";
 import { Service } from "@/types/common.types";
+import { motion } from "framer-motion";
 import { getIconComponent } from "@/lib/iconMapper";
+import { CheckCircle2, ArrowLeft, Zap, ShieldCheck, Clock } from "lucide-react";
+import Link from "next/link";
 
 export default function ServiceDetailsPage({ service }: { service: Service }) {
     const Icon = getIconComponent(service.icon);
 
     return (
-        <div className="min-h-screen bg-background font-sans">
-            {/* HERO SECTION */}
-            <section className="relative pt-32 pb-20 overflow-hidden">
-                {/* Thematic Glow */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,var(--primary)_0%,transparent_70%)] opacity-[0.03] pointer-events-none" />
+        <main className="bg-[#FAFAFA] min-h-screen">
+            {/* ── Page Header ── */}
+            <header className="relative pt-32 pb-20 overflow-hidden border-b border-border/50">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-teal/5 blur-[120px] -z-10 rounded-full" />
 
-                <div className="container-narrow px-6 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="max-w-4xl"
+                <SectionWrapper containerClassName="px-6">
+                    <Link
+                        href="/services"
+                        className="inline-flex items-center gap-2 text-[#999999] hover:text-primary-teal text-xs font-black uppercase tracking-widest mb-12 transition-colors group"
                     >
-                        <Link
-                            href="/services"
-                            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8 group mr-5"
+                        <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+                        Back to Services
+                    </Link>
+
+                    <div className="max-w-4xl">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="w-20 h-20 rounded-3xl bg-primary-teal/5 border border-primary-teal/10 flex items-center justify-center mb-8"
                         >
-                            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                            Back to Services
-                        </Link>
+                            <Icon className="text-primary-teal" size={40} strokeWidth={1.5} />
+                        </motion.div>
 
-                        <Badge variant="outline" className="mb-8 px-3 py-1 border-primary/20 bg-primary/5 text-primary rounded-full">
-                            Expert Solutions
-                        </Badge>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="font-heading text-5xl md:text-7xl font-black text-black uppercase tracking-tighter leading-none mb-8"
+                        >
+                            {service.title}
+                        </motion.h1>
 
-                        <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
-                            <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary shadow-lg shadow-primary/20">
-                                <Icon className="text-primary-foreground" size={32} />
-                            </div>
-
-                            <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
-                                {service.title}
-                            </h1>
-                        </div>
-
-                        <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mb-10 antialiased">
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="text-[#999999] text-xl md:text-2xl font-medium leading-relaxed"
+                        >
                             {service.desc}
-                        </p>
+                        </motion.p>
+                    </div>
+                </SectionWrapper>
+            </header>
 
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-12 px-8 rounded-full shadow-lg shadow-primary/10 group" asChild>
-                                <Link href="/contact">
-                                    Start Your Project
-                                    <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                </Link>
-                            </Button>
+            {/* ── Content Section ── */}
+            <SectionWrapper className="py-20">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
-                            <Button variant="outline" size="lg" className="h-12 px-8 rounded-full bg-background/50 backdrop-blur-sm" asChild>
-                                <Link href="/portfolio">See Case Studies</Link>
-                            </Button>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* BENEFITS SECTION */}
-            <section className="py-24 bg-secondary/30">
-                <div className="container-narrow px-6">
-                    <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
-                        <div className="max-w-2xl">
-                            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 tracking-tight text-foreground">
-                                What you&apos;ll get
+                    {/* Left: Detailed Breakdown */}
+                    <div className="lg:col-span-7 space-y-12">
+                        <section>
+                            <h2 className="font-heading font-black text-2xl text-black uppercase tracking-tight mb-6 flex items-center gap-3">
+                                <span className="w-8 h-px bg-primary-teal" />
+                                The Approach
                             </h2>
-                            <p className="text-muted-foreground text-lg">
-                                High-impact deliverables designed to scale your brand.
+                            <p className="text-[#999999] text-lg leading-relaxed font-medium">
+                                We utilize a specialized workflow for <span className="text-black font-bold">{service.title}</span> that prioritizes
+                                efficiency without sacrificing quality. By leveraging modern frameworks like Next.js and
+                                TypeScript, we ensure that every deliverable is future-proof and highly performant.
                             </p>
-                        </div>
-                        <div className="hidden md:block h-px flex-1 bg-border mx-12 mb-5" />
-                    </div>
+                        </section>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {service.benefits.map((benefit, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                            >
-                                <Card className="h-full border-border/50 bg-card hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
-                                    <CardContent className="p-8">
-                                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                                            <Check size={20} className="text-primary" strokeWidth={3} />
-                                        </div>
-                                        <p className="font-sans font-semibold text-foreground leading-snug">
-                                            {benefit}
-                                        </p>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* PROCESS SECTION */}
-            <section className="py-24">
-                <div className="container-narrow px-6">
-                    <div className="text-center mb-16">
-                        <Badge variant="secondary" className="mb-4">Workflow</Badge>
-                        <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight">Our Proven Process</h2>
-                    </div>
-
-                    <div className="grid md:grid-cols-4 gap-8 relative">
-                        {/* Desktop Connector Line */}
-                        <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-border -z-10" />
-
-                        {[
-                            { title: "Requirement Analysis", desc: "Understanding your goals" },
-                            { title: "Planning & Strategy", desc: "Mapping the blueprint" },
-                            { title: "Execution", desc: "Bringing it to life" },
-                            { title: "Delivery & Support", desc: "Launching for success" },
-                        ].map((step, i) => (
-                            <div key={i} className="flex flex-col items-center text-center">
-                                <div className="w-14 h-14 rounded-2xl bg-background border-2 border-primary/20 flex items-center justify-center mb-6 shadow-sm relative z-10">
-                                    <span className="text-xl font-heading font-bold text-primary">0{i + 1}</span>
-                                </div>
-                                <h3 className="font-heading font-bold text-lg mb-2">{step.title}</h3>
-                                <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+                        {/* Feature Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="p-8 rounded-3xl border border-border bg-slate-50/50">
+                                <Zap className="text-primary-teal mb-4" size={24} />
+                                <h4 className="text-black font-black uppercase tracking-tight text-sm mb-2">High Performance</h4>
+                                <p className="text-[#999999] text-xs font-medium leading-relaxed">Optimized code ensures lightning-fast load times and seamless interactions.</p>
                             </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA SECTION */}
-            <section className="py-24">
-                <div className="container-narrow px-6">
-                    <Card className="relative overflow-hidden border-none bg-primary text-primary-foreground p-12 md:p-20 text-center">
-                        {/* Abstract Background for CTA */}
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--background)_0%,transparent_50%)] opacity-10" />
-
-                        <div className="relative z-10 max-w-2xl mx-auto">
-                            <Sparkles className="mx-auto mb-6 opacity-80" size={32} />
-                            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-                                Ready to accelerate your brand?
-                            </h2>
-                            <p className="text-primary-foreground/80 mb-10 text-lg md:text-xl font-sans">
-                                Let&apos;s work together and bring your vision to life with our {service.title} expertise.
-                            </p>
-                            <Button size="lg" variant="secondary" className="h-14 px-10 rounded-full font-bold text-lg hover:scale-105 transition-transform" asChild>
-                                <Link href="/contact">Start Your Project</Link>
-                            </Button>
+                            <div className="p-8 rounded-3xl border border-border bg-slate-50/50">
+                                <ShieldCheck className="text-primary-teal mb-4" size={24} />
+                                <h4 className="text-black font-black uppercase tracking-tight text-sm mb-2">Secure & Robust</h4>
+                                <p className="text-[#999999] text-xs font-medium leading-relaxed">Industry-standard security practices integrated into every build.</p>
+                            </div>
                         </div>
-                    </Card>
+
+                        <section className="pt-8">
+                            <h2 className="font-heading font-black text-2xl text-black uppercase tracking-tight mb-6">Our Commitment</h2>
+                            <p className="text-[#999999] text-lg leading-relaxed font-medium">
+                                At ThePixelVerse, we don’t just provide a service; we become a technical partner.
+                                Our goal is to translate your vision into a digital asset that drives revenue
+                                and enhances brand reputation.
+                            </p>
+                        </section>
+                    </div>
+
+                    {/* Right: Sticky Deliverables Sidebar */}
+                    <aside className="lg:col-span-5">
+                        <div className="sticky top-32 p-8 md:p-10 rounded-[2.5rem] bg-black text-white overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-teal/20 blur-3xl rounded-full" />
+
+                            <h3 className="relative z-10 text-[10px] font-black text-primary-teal uppercase tracking-[0.3em] mb-8">
+                                Deliverables Included
+                            </h3>
+
+                            <ul className="relative z-10 space-y-6">
+                                {service.benefits.map((benefit, i) => (
+                                    <motion.li
+                                        initial={{ opacity: 0, x: 10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: i * 0.1 }}
+                                        key={benefit}
+                                        className="flex items-start gap-4 border-b border-white/10 pb-4 last:border-0"
+                                    >
+                                        <CheckCircle2 size={20} className="text-primary-teal flex-shrink-0 mt-0.5" />
+                                        <span className="text-white font-medium text-lg tracking-tight">{benefit}</span>
+                                    </motion.li>
+                                ))}
+                            </ul>
+
+                            <div className="mt-12 pt-8 border-t border-white/10 relative z-10">
+                                <div className="flex items-center gap-3 text-[#999999] mb-8">
+                                    <Clock size={16} />
+                                    <span className="text-[10px] font-bold uppercase tracking-widest">Typical Timeline: 2-4 Weeks</span>
+                                </div>
+
+                                <Link
+                                    href="/contact"
+                                    className="block w-full text-center py-5 bg-primary-teal text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-white hover:text-black transition-all duration-300"
+                                >
+                                    Book This Service
+                                </Link>
+                            </div>
+                        </div>
+                    </aside>
+
                 </div>
-            </section>
-        </div>
+            </SectionWrapper>
+        </main>
     );
 }

@@ -9,6 +9,7 @@ import Link from "next/link";
 
 export default function ServiceCard({ service, i }: { service: Service, i: number }) {
     const Icon = getIconComponent(service.icon);
+
     return (
         <motion.div
             key={service.title}
@@ -17,41 +18,57 @@ export default function ServiceCard({ service, i }: { service: Service, i: numbe
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
-            whileHover={{ y: -5 }}
-            className="group relative flex flex-col h-full bg-card hover:bg-accent/5 transition-colors rounded-3xl border border-border p-8 overflow-hidden hover:cursor-pointer"
+            whileHover={{ y: -8 }}
+            className="group relative flex flex-col h-full bg-white hover:shadow-2xl hover:shadow-primary-teal/5 transition-all duration-500 rounded-[2.5rem] border border-border p-8 overflow-hidden cursor-pointer"
         >
-            <Link href={`${service.url}`}>
-                {/* Decorative Background Blur */}
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
+            <Link href={`${service.url}`} className="h-full">
+                {/* ── Background Decoration ── */}
+                <div className="absolute -right-6 -top-6 w-32 h-32 bg-primary-teal/5 rounded-full blur-3xl group-hover:bg-primary-teal/10 transition-colors duration-500" />
 
                 <div className="relative flex flex-col h-full">
-                    {/* Icon & Title */}
-                    <div className="flex items-start justify-between mb-6">
-                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center ring-1 ring-primary/20 group-hover:ring-primary/40 transition-all">
-                            <Icon className="text-primary group-hover:scale-110 transition-transform" size={28} />
+
+                    {/* ── Header: Icon & Arrow ── */}
+                    <div className="flex items-start justify-between mb-8">
+                        <div className="w-16 h-16 rounded-[1.25rem] bg-primary-teal/5 flex items-center justify-center border border-primary-teal/10 group-hover:bg-primary-teal group-hover:border-primary-teal transition-all duration-500">
+                            <Icon
+                                className="text-primary-teal group-hover:text-white group-hover:scale-110 transition-all duration-500"
+                                size={30}
+                                strokeWidth={1.5}
+                            />
                         </div>
-                        <ArrowRight className="text-muted-foreground/30 group-hover:text-primary group-hover:translate-x-1 transition-all" size={20} />
+                        <div className="p-2 rounded-full bg-slate-50 group-hover:bg-primary-teal transition-colors duration-500">
+                            <ArrowRight
+                                className="text-[#999999] group-hover:text-white group-hover:translate-x-0.5 transition-all duration-500"
+                                size={18}
+                            />
+                        </div>
                     </div>
 
+                    {/* ── Main Content ── */}
                     <div className="flex-1">
-                        <h3 className="font-sans font-bold text-xl text-foreground mb-3 tracking-tight">
+                        <h3 className="font-heading font-black text-2xl text-black mb-3 uppercase tracking-tight">
                             {service.title}
                         </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+                        <p className="text-[#999999] text-base leading-relaxed mb-10 font-medium">
                             {service.desc}
                         </p>
                     </div>
 
-                    {/* Benefits Section */}
-                    <div className="pt-6 border-t border-border/50">
-                        <h4 className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] mb-4">
+                    {/* ── Deliverables Section ── */}
+                    <div className="pt-8 border-t border-border/60">
+                        <h4 className="text-[10px] font-black text-black uppercase tracking-[0.25em] mb-6 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary-teal" />
                             Key Deliverables
                         </h4>
-                        <ul className="space-y-3">
+
+                        <ul className="space-y-4">
                             {service.benefits.slice(0, 4).map((b) => (
-                                <li key={b} className="flex items-center gap-3 text-[13px] text-muted-foreground/80 group-hover:text-foreground transition-colors">
-                                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                                        <CheckCircle2 size={12} className="text-primary" />
+                                <li
+                                    key={b}
+                                    className="flex items-center gap-3 text-[14px] text-[#999999] group-hover:text-black transition-colors duration-300 font-medium"
+                                >
+                                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary-teal/10 flex items-center justify-center border border-primary-teal/5">
+                                        <CheckCircle2 size={12} className="text-primary-teal" />
                                     </div>
                                     {b}
                                 </li>
@@ -59,6 +76,9 @@ export default function ServiceCard({ service, i }: { service: Service, i: numbe
                         </ul>
                     </div>
                 </div>
+
+                {/* ── Bottom Accent Line ── */}
+                <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary-teal group-hover:w-full transition-all duration-700 ease-in-out" />
             </Link>
         </motion.div>
     );

@@ -6,6 +6,8 @@ export interface Service {
     desc: string;
     benefits: string[];
     url?: string;
+    before: StaticImageData;
+    after: StaticImageData;
 }
 
 export interface Project {
@@ -19,6 +21,7 @@ export interface Project {
     results: { label: string; value: string }[];
     image: StaticImageData;
     desc: string;
+    liveLink: string;
 }
 
 export interface Testimonial {
@@ -52,6 +55,7 @@ export interface SocialLink {
 export interface Stat {
     number: string;
     label: string;
+    sub: string;
 }
 
 export interface ContactInfo {
@@ -100,4 +104,28 @@ export interface Steps {
     icon: string;
     title: string;
     desc: string;
+}
+
+export interface TeamMember {
+    name: string;
+    role: string;
+    designation: string;
+    initial: string;
+}
+
+export interface ServiceStep {
+    title: string;
+    desc: string;
+    icon: string;
+}
+
+export interface ServiceTech {
+    name: string;
+    category: string;
+    icon: string;
+}
+
+export interface FAQ {
+    question: string;
+    answer: string;
 }

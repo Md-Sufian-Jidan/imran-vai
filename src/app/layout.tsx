@@ -1,19 +1,20 @@
-import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
+import type { Metadata } from "next";
+import { Montserrat, Plus_Jakarta_Sans } from "next/font/google"; // Swapped to Montserrat
 import "./globals.css";
 import Transition from "@/components/shared/Transition";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import { Toaster } from "sonner";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
+  variable: "--font-jakarta",
   subsets: ["latin"],
   display: "swap",
 });
@@ -24,19 +25,14 @@ const SITE_DESCRIPTION =
   "ThePixelVerse crafts high-performance digital products — from brand identity to production-ready web apps.";
 const SITE_KEYWORDS = process.env.SITE_KEYWORDS;
 
-// ─── Default metadata (all pages inherit + can override) ──────────────────────
-
 export const metadata: Metadata = {
-  // ── Core ──────────────────────────────────────────────────────────────────
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Digital Design & Development Studio`,
+    default: `${SITE_NAME} — Professional Photo Editing & Retouching Studio`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   keywords: SITE_KEYWORDS,
-
-  // ── Canonical / robots ────────────────────────────────────────────────────
   alternates: {
     canonical: "/",
   },
@@ -61,9 +57,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full">
+      <body className="min-h-full bg-white font-sans">
         <Navbar />
         <Transition>{children}</Transition>
         <Footer />

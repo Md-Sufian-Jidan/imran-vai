@@ -38,7 +38,7 @@ export const BeforeAfterSlider = ({
         []
     );
 
-    // Mouse
+    // Mouse events
     const onMouseDown = (e: React.MouseEvent) => {
         e.preventDefault();
         setIsDragging(true);
@@ -50,7 +50,7 @@ export const BeforeAfterSlider = ({
     );
     const onMouseUp = useCallback(() => setIsDragging(false), []);
 
-    // Touch
+    // Touch events
     const onTouchStart = (e: React.TouchEvent) => {
         setIsDragging(true);
         getPositionFromEvent(e.touches[0].clientX);
@@ -79,19 +79,19 @@ export const BeforeAfterSlider = ({
             ref={containerRef}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`relative w-full h-full select-none overflow-hidden rounded-3xl ${className}`}
+            className={`relative w-full h-full select-none overflow-hidden rounded-3xl border border-border bg-white shadow-sm ${className}`}
             style={{ cursor: isDragging ? "grabbing" : "grab" }}
         >
             {/* ── AFTER image (full, beneath) ── */}
             <div className="absolute inset-0">
                 <Image src={afterSrc} alt={afterAlt} fill className="object-cover" priority />
-                {/* "After" label */}
+                {/* "After" label - Minimalist Black/White */}
                 <div className="absolute bottom-4 right-4 z-10">
                     <span className="
-            px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest
-            bg-emerald-500/20 text-emerald-400 border border-emerald-500/30
-            backdrop-blur-sm
-          ">
+                        px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em]
+                        bg-white text-black border border-black/10
+                        backdrop-blur-md shadow-sm
+                    ">
                         After
                     </span>
                 </div>
@@ -106,63 +106,63 @@ export const BeforeAfterSlider = ({
                     src={beforeSrc}
                     alt={beforeAlt}
                     className="object-cover h-full"
-                    style={{ width: `${(100 / position) * 100}%`, maxWidth: "none"  }}
+                    style={{ width: `${(100 / position) * 100}%`, maxWidth: "none" }}
                     priority
                 />
-                {/* "Before" label */}
+                {/* "Before" label - Subdued Gray #999999 */}
                 <div className="absolute bottom-4 left-4 z-10">
                     <span className="
-            px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest
-            bg-black/40 text-white/70 border border-white/15
-            backdrop-blur-sm
-          ">
+                        px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em]
+                        bg-black/60 text-[#999999] border border-white/10
+                        backdrop-blur-md
+                    ">
                         Before
                     </span>
                 </div>
             </div>
 
-            {/* ── Divider line ── */}
+            {/* ── Divider line - Primary Teal ── */}
             <div
-                className="absolute inset-y-0 z-20 w-px bg-emerald-500"
+                className="absolute inset-y-0 z-20 w-px bg-primary-teal"
                 style={{ left: `${position}%` }}
             />
 
-            {/* ── Drag handle ── */}
+            {/* ── Drag handle - Primary Teal ── */}
             <motion.div
                 onMouseDown={onMouseDown}
                 onTouchStart={onTouchStart}
-                animate={{ scale: isDragging ? 1.15 : isHovered ? 1.06 : 1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 28 }}
+                animate={{ scale: isDragging ? 1.1 : isHovered ? 1.05 : 1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 className="
-          absolute top-1/2 z-30
-          -translate-x-1/2 -translate-y-1/2
-          w-12 h-12 rounded-full
-          bg-emerald-700 shadow-2xl shadow-black/40
-          flex items-center justify-center
-          border-2 border-emerald-800
-        "
+                    absolute top-1/2 z-30
+                    -translate-x-1/2 -translate-y-1/2
+                    w-10 h-10 rounded-full
+                    bg-primary-teal shadow-xl shadow-black/20
+                    flex items-center justify-center
+                    border-2 border-white
+                "
                 style={{ left: `${position}%` }}
             >
-                <MoveHorizontal size={18} className="text-white" strokeWidth={2.5} />
+                <MoveHorizontal size={16} className="text-white" strokeWidth={3} />
             </motion.div>
 
-            {/* ── Drag hint (fades out after interaction) ── */}
+            {/* ── Drag hint ── */}
             <motion.div
                 initial={{ opacity: 1 }}
-                animate={{ opacity: isDragging || position !== initialPosition ? 0 : 0.9 }}
-                transition={{ duration: 0.4 }}
+                animate={{ opacity: isDragging || position !== initialPosition ? 0 : 1 }}
+                transition={{ duration: 0.3 }}
                 className="
-          absolute inset-0 z-10 flex items-center justify-center
-          pointer-events-none
-        "
+                    absolute inset-0 z-10 flex items-center justify-center
+                    pointer-events-none
+                "
             >
                 <div className="
-          px-4 py-2 rounded-full
-          bg-black/50 backdrop-blur-sm
-          text-white text-xs font-semibold tracking-wide
-          border border-white/15
-        ">
-                    Drag to compare
+                    px-5 py-2 rounded-full
+                    bg-white/90 backdrop-blur-md
+                    text-black text-[11px] font-bold uppercase tracking-wider
+                    border border-black/5 shadow-sm
+                ">
+                    Slide to Compare
                 </div>
             </motion.div>
         </div>
