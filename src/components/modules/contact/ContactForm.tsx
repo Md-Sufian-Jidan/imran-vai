@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { sendMail } from "@/app/actions/email";
+import { sendMail } from "@/app/contact/_actions";
 
 const contactSchema = z.object({
     name: z.string().min(2, { error: "Name is required" }),
@@ -43,7 +43,7 @@ export default function ContactForm() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="w-full max-w-xl mx-auto"
+            className="w-full max-w-4xl mx-auto"
         >
             <form
                 onSubmit={(e) => {

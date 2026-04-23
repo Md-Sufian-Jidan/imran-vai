@@ -20,7 +20,7 @@ const cardVariants: Variants = {
 export default function MissionVision() {
     return (
         <section>
-            <SectionWrapper className="bg-[#FAFAFA]" containerClassName="px-6">
+            <SectionWrapper className="bg-[#FAFAFA]" containerClassName="px-0 md:px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
 
                     {/* ── Mission Card ── */}

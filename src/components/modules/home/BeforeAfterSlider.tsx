@@ -79,7 +79,7 @@ export const BeforeAfterSlider = ({
             ref={containerRef}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`relative w-full h-full select-none overflow-hidden rounded-3xl border border-border bg-white shadow-sm ${className}`}
+            className={`relative w-full h-full select-none overflow-hidden rounded-xl border border-border bg-white shadow-sm ${className}`}
             style={{ cursor: isDragging ? "grabbing" : "grab" }}
         >
             {/* ── AFTER image (full, beneath) ── */}
@@ -88,8 +88,8 @@ export const BeforeAfterSlider = ({
                 {/* "After" label - Minimalist Black/White */}
                 <div className="absolute bottom-4 right-4 z-10">
                     <span className="
-                        px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em]
-                        bg-white text-black border border-black/10
+                        px-3 py-1 rounded-xl text-xs font-black uppercase tracking-[0.2em]
+                        bg-primary-teal text-white border border-black/10
                         backdrop-blur-md shadow-sm
                     ">
                         After
@@ -112,8 +112,8 @@ export const BeforeAfterSlider = ({
                 {/* "Before" label - Subdued Gray #999999 */}
                 <div className="absolute bottom-4 left-4 z-10">
                     <span className="
-                        px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em]
-                        bg-black/60 text-[#999999] border border-white/10
+                        px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-[0.2em]
+                        bg-white text-black border border-white/10
                         backdrop-blur-md
                     ">
                         Before
@@ -136,7 +136,7 @@ export const BeforeAfterSlider = ({
                 className="
                     absolute top-1/2 z-30
                     -translate-x-1/2 -translate-y-1/2
-                    w-10 h-10 rounded-full
+                    w-10 h-10 rounded-xl
                     bg-primary-teal shadow-xl shadow-black/20
                     flex items-center justify-center
                     border-2 border-white
@@ -157,7 +157,7 @@ export const BeforeAfterSlider = ({
                 "
             >
                 <div className="
-                    px-5 py-2 rounded-full
+                    px-5 py-2 rounded-xl
                     bg-white/90 backdrop-blur-md
                     text-black text-[11px] font-bold uppercase tracking-wider
                     border border-black/5 shadow-sm

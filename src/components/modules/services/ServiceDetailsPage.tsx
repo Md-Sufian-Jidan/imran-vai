@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { getIconComponent } from "@/lib/iconMapper";
 import { CheckCircle2, ArrowLeft, Zap, ShieldCheck, Clock } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function ServiceDetailsPage({ service }: { service: Service }) {
     const Icon = getIconComponent(service.icon);
@@ -13,10 +14,10 @@ export default function ServiceDetailsPage({ service }: { service: Service }) {
     return (
         <main className="bg-[#FAFAFA] min-h-screen">
             {/* ── Page Header ── */}
-            <header className="relative pt-32 pb-20 overflow-hidden border-b border-border/50">
+            <header className="relative py-20 overflow-hidden border-b border-border/50">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-teal/5 blur-[120px] -z-10 rounded-full" />
 
-                <SectionWrapper containerClassName="px-6">
+                <SectionWrapper containerClassName="px-3 md:px-6">
                     <Link
                         href="/services"
                         className="inline-flex items-center gap-2 text-[#999999] hover:text-primary-teal text-xs font-black uppercase tracking-widest mb-12 transition-colors group"
@@ -29,7 +30,7 @@ export default function ServiceDetailsPage({ service }: { service: Service }) {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="w-20 h-20 rounded-3xl bg-primary-teal/5 border border-primary-teal/10 flex items-center justify-center mb-8"
+                            className="w-20 h-20 rounded-xl bg-primary-teal/5 border border-primary-teal/10 flex items-center justify-center mb-8"
                         >
                             <Icon className="text-primary-teal" size={40} strokeWidth={1.5} />
                         </motion.div>
@@ -56,7 +57,7 @@ export default function ServiceDetailsPage({ service }: { service: Service }) {
             </header>
 
             {/* ── Content Section ── */}
-            <SectionWrapper className="py-20">
+            <SectionWrapper className="py-20" containerClassName="px-3 md:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
                     {/* Left: Detailed Breakdown */}
@@ -75,12 +76,12 @@ export default function ServiceDetailsPage({ service }: { service: Service }) {
 
                         {/* Feature Cards */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="p-8 rounded-3xl border border-border bg-slate-50/50">
+                            <div className="p-8 rounded-xl border border-border bg-slate-50/50">
                                 <Zap className="text-primary-teal mb-4" size={24} />
                                 <h4 className="text-black font-black uppercase tracking-tight text-sm mb-2">High Performance</h4>
                                 <p className="text-[#999999] text-xs font-medium leading-relaxed">Optimized code ensures lightning-fast load times and seamless interactions.</p>
                             </div>
-                            <div className="p-8 rounded-3xl border border-border bg-slate-50/50">
+                            <div className="p-8 rounded-xl border border-border bg-slate-50/50">
                                 <ShieldCheck className="text-primary-teal mb-4" size={24} />
                                 <h4 className="text-black font-black uppercase tracking-tight text-sm mb-2">Secure & Robust</h4>
                                 <p className="text-[#999999] text-xs font-medium leading-relaxed">Industry-standard security practices integrated into every build.</p>
@@ -99,7 +100,7 @@ export default function ServiceDetailsPage({ service }: { service: Service }) {
 
                     {/* Right: Sticky Deliverables Sidebar */}
                     <aside className="lg:col-span-5">
-                        <div className="sticky top-32 p-8 md:p-10 rounded-[2.5rem] bg-black text-white overflow-hidden">
+                        <div className="sticky top-32 p-8 md:p-10 rounded-xl bg-black text-white overflow-hidden">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary-teal/20 blur-3xl rounded-full" />
 
                             <h3 className="relative z-10 text-[10px] font-black text-primary-teal uppercase tracking-[0.3em] mb-8">
@@ -127,12 +128,16 @@ export default function ServiceDetailsPage({ service }: { service: Service }) {
                                     <span className="text-[10px] font-bold uppercase tracking-widest">Typical Timeline: 2-4 Weeks</span>
                                 </div>
 
-                                <Link
-                                    href="/contact"
-                                    className="block w-full text-center py-5 bg-primary-teal text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-white hover:text-black transition-all duration-300"
+                                <Button
+                                    variant="outline"
+                                    size="lg"
+                                    asChild
+                                    className="h-12 px-6 rounded-xl font-bold border border-primary-teal bg-primary-foreground hover:bg-primary-teal hover:text-white hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
                                 >
-                                    Book This Service
-                                </Link>
+                                    <Link href="/contact">
+                                        Book This Service
+                                    </Link>
+                                </Button>
                             </div>
                         </div>
                     </aside>

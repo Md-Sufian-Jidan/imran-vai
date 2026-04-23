@@ -19,7 +19,7 @@ export default function ServiceCard({ service, i }: { service: Service, i: numbe
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUp}
             whileHover={{ y: -8 }}
-            className="group relative flex flex-col h-full bg-white hover:shadow-2xl hover:shadow-primary-teal/5 transition-all duration-500 rounded-[2.5rem] border border-border p-8 overflow-hidden cursor-pointer"
+            className="group relative flex flex-col h-full bg-white hover:shadow-2xl hover:shadow-primary-teal/5 transition-all duration-500 rounded-xl border border-border p-8 overflow-hidden cursor-pointer"
         >
             <Link href={`${service.url}`} className="h-full">
                 {/* ── Background Decoration ── */}
@@ -29,7 +29,7 @@ export default function ServiceCard({ service, i }: { service: Service, i: numbe
 
                     {/* ── Header: Icon & Arrow ── */}
                     <div className="flex items-start justify-between mb-8">
-                        <div className="w-16 h-16 rounded-[1.25rem] bg-primary-teal/5 flex items-center justify-center border border-primary-teal/10 group-hover:bg-primary-teal group-hover:border-primary-teal transition-all duration-500">
+                        <div className="w-16 h-16 rounded-xl bg-primary-teal/5 flex items-center justify-center border border-primary-teal/10 group-hover:bg-primary-teal group-hover:border-primary-teal transition-all duration-500">
                             <Icon
                                 className="text-primary-teal group-hover:text-white group-hover:scale-110 transition-all duration-500"
                                 size={30}

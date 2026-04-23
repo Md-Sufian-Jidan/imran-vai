@@ -1,8 +1,8 @@
 export default function ContactMap() {
     return (
-        <div className="w-full h-[450px] rounded-[2.5rem] overflow-hidden border border-[#d1d5db] shadow-[0_20px_50px_rgba(187,222,231,0.15)] relative bg-white mt-12">
+        <div className="w-full h-[500px] rounded-xl overflow-hidden border border-[#d1d5db] shadow-[0_20px_50px_rgba(187,222,231,0.15)] relative bg-white mt-12">
             {/* Top Overlay Gradient for depth */}
-            <div className="absolute inset-0 pointer-events-none border-[12px] border-white rounded-[2.5rem] z-10" />
+            <div className="absolute inset-0 pointer-events-none border-[12px] border-white rounded-xl z-10" />
 
             <iframe
                 width="100%"
@@ -16,7 +16,7 @@ export default function ContactMap() {
             ></iframe>
 
             {/* Floating Badge - Primary Teal and Navy Text */}
-            <div className="absolute bottom-10 left-10 z-20 bg-[#1fb1c1] text-white px-6 py-4 rounded-2xl shadow-xl shadow-[#1fb1c1]/20 flex items-center gap-3">
+            <div className="absolute bottom-10 left-10 z-20 bg-[#1fb1c1] text-white px-6 py-4 rounded-xl shadow-xl shadow-[#1fb1c1]/20 flex items-center gap-3">
                 <div className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
@@ -29,7 +29,7 @@ export default function ContactMap() {
 
             {/* Navy Accent Corner */}
             <div className="absolute top-0 right-0 p-8 z-20">
-                <div className="bg-[#1fb1c1] text-white text-sm font-bold px-4 py-2 rounded-full uppercase tracking-tighter shadow-lg">
+                <div className="bg-[#1fb1c1] text-white text-sm font-bold px-4 py-2 rounded-xl uppercase tracking-tighter shadow-lg">
                     Based in Narayanganj
                 </div>
             </div>

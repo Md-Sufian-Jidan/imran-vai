@@ -35,7 +35,7 @@ const Navbar = () => {
         >
             <nav
                 className={cn(
-                    "container mx-auto transition-all duration-500 rounded-2xl border",
+                    "container mx-auto transition-all duration-500 rounded-xl border",
                     scrolled
                         ? "bg-white/80 backdrop-blur-xl border-border shadow-lg py-2" // Changed to white bg, default border, simple shadow
                         : "bg-transparent border-transparent py-5"
@@ -47,7 +47,7 @@ const Navbar = () => {
                         <div className="w-10 h-10 rounded-xl bg-primary-teal flex items-center justify-center transition-transform group-hover:rotate-12"> {/* Removed specific glow shadow */}
                             <Zap size={22} className="text-white fill-current" /> {/* Icon is white against primary (black) bg */}
                         </div>
-                        <span className="font-heading font-bold text-xl tracking-tight text-black"> {/* Logo text is black */}
+                        <span className="font-heading font-bold text-2xl tracking-tight text-black"> {/* Logo text is black */}
                             ThePixel<span className="text-primary-teal">Verse</span> {/* Highlight uses Teal */}
                         </span>
                     </Link>
@@ -113,7 +113,7 @@ const Navbar = () => {
                                                             href={sub.href}
                                                             className="text-sm py-2 text-[#999999] hover:text-primary-teal transition-colors flex items-center gap-2 group/item" // Links are gray (#999999), hover to Teal
                                                         >
-                                                            <div className="w-1 h-1 rounded-full bg-primary-teal opacity-0 group-hover/item:opacity-100 transition-all" /> {/* Dot is Teal */}
+                                                            <div className="w-1 h-1 rounded-xl bg-primary-teal opacity-0 group-hover/item:opacity-100 transition-all" /> {/* Dot is Teal */}
                                                             {sub.title}
                                                         </Link>
                                                     ))}
@@ -130,7 +130,7 @@ const Navbar = () => {
                     <div className="flex items-center gap-4">
                         <Button
                             asChild
-                            className="hidden md:flex rounded-xl px-6 border border-primary-teal bg-primary-foreground text-black hover:bg-primary-teal hover:text-white h-11 font-bold" // Main CTA: Black, hovers to Teal
+                            className="hidden md:flex rounded-xl px-6 border border-primary-teal bg-primary-foreground text-black hover:bg-primary-teal hover:text-white h-12 font-bold" // Main CTA: Black, hovers to Teal
                         >
                             <Link href="/contact">Get Started</Link>
                         </Button>
@@ -152,7 +152,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "100vh" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="fixed inset-0 bg-white z-40 flex flex-col pt-24 px-6 overflow-y-auto" // White background overlay
+                        className="fixed inset-0 bg-white z-40 flex flex-col pt-24 px-4 overflow-y-auto" // White background overlay
                     >
                         <div className="flex flex-col gap-2">
                             {navLinks.map((link, i) => {
@@ -193,7 +193,7 @@ const Navbar = () => {
                                     </motion.div>
                                 );
                             })}
-                            <Button className="mt-8 w-full h-14 rounded-2xl bg-primary text-white text-lg font-bold hover:bg-primary-teal"> {/* Mobile CTA: Black, hovers to Teal */}
+                            <Button className="mt-8 w-full h-12 rounded-xl bg-primary text-white text-lg font-bold hover:bg-primary-teal"> {/* Mobile CTA: Black, hovers to Teal */}
                                 Get a Quote
                             </Button>
                         </div>

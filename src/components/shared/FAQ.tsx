@@ -10,7 +10,7 @@ import { HelpCircle } from "lucide-react";
 
 export default function FAQSection() {
     return (
-        <SectionWrapper className="bg-white" containerClassName="px-6">
+        <SectionWrapper className="bg-white" containerClassName="px-0 md:px-6">
             <div className="flex flex-col lg:flex-row gap-16">
 
                 {/* ── Left Side: Intro ── */}
@@ -21,7 +21,7 @@ export default function FAQSection() {
                         description="Everything you need to know about our process, pricing, and how we deliver world-class digital products."
                     />
 
-                    <div className="mt-10 p-8 rounded-[2rem] border border-primary-teal/20 bg-primary-teal/5">
+                    <div className="mt-10 p-8 rounded-xl border border-primary-teal/20 bg-primary-teal/5">
                         <HelpCircle className="text-primary-teal mb-4" size={32} />
                         <h4 className="text-black font-black uppercase tracking-tight mb-2">Still have questions?</h4>
                         <p className="text-[#999999] text-sm font-medium leading-relaxed mb-6">
@@ -46,7 +46,7 @@ export default function FAQSection() {
                             <AccordionItem
                                 key={i}
                                 value={`item-${i}`}
-                                className="border border-border rounded-3xl px-6 md:px-8 transition-all duration-300 data-[state=open]:border-primary-teal/40 data-[state=open]:shadow-xl data-[state=open]:shadow-primary-teal/5"
+                                className="border border-border rounded-xl px-6 md:px-8 transition-all duration-300 data-[state=open]:border-primary-teal/40 data-[state=open]:shadow-xl data-[state=open]:shadow-primary-teal/5"
                             >
                                 <AccordionTrigger className="hover:no-underline py-6">
                                     <span className="text-left font-heading font-black text-lg text-black uppercase tracking-tight group-data-[state=open]:text-primary-teal transition-colors">

@@ -21,7 +21,7 @@ const Footer = () => {
                     {/* Brand & Newsletter col */}
                     <div className="lg:col-span-5 space-y-8">
                         <Link href="/" className="flex items-center gap-2 group relative z-10">
-                            <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center transition-transform duration-300 group-hover:rotate-12">
+                            <div className="w-10 h-10 rounded-xl bg-primary-teal flex items-center justify-center transition-transform duration-300 group-hover:rotate-12">
                                 <Zap size={20} className="text-white fill-current" />
                             </div>
                             <span className="font-heading font-bold text-2xl tracking-tight text-black">

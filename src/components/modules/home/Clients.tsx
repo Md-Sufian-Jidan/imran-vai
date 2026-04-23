@@ -18,7 +18,7 @@ export default function Clients() {
                     viewport={{ once: true }}
                     className="flex flex-col items-center mb-12"
                 >
-                    <p className="text-center text-[#999999] text-sm md:text-base font-bold uppercase tracking-[0.3em] font-plus-jakarta">
+                    <p className="text-center text-black text-sm md:text-base font-bold uppercase tracking-[0.3em] font-plus-jakarta">
                         Trusted by forward-thinking brands
                     </p>
                     <div className="h-px w-12 bg-primary-teal/30 mt-4" />

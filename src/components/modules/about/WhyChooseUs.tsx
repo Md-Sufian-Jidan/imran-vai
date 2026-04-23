@@ -22,7 +22,7 @@ const cardVariants: Variants = {
 export default function WhyChooseUs() {
     return (
         <section>
-            <SectionWrapper className="bg-white" containerClassName="px-6">
+            <SectionWrapper className="bg-white" containerClassName="px-0 md:px-6">
                 {/* Heading uses your brand logic */}
                 <SectionHeading
                     label="The Difference"
@@ -41,7 +41,7 @@ export default function WhyChooseUs() {
                                 whileInView="visible"
                                 viewport={{ once: true }}
                                 variants={cardVariants}
-                                className="group relative bg-white rounded-[2rem] p-8 md:p-10 border border-border transition-all duration-500 hover:border-primary-teal/30 hover:shadow-xl hover:shadow-primary-teal/5"
+                                className="group relative bg-white rounded-xl p-8 md:p-10 border border-border transition-all duration-500 hover:border-primary-teal/30 hover:shadow-xl hover:shadow-primary-teal/5"
                             >
                                 {/* Icon Container - Primary Teal */}
                                 <div className="w-14 h-14 rounded-2xl bg-primary-teal/5 flex items-center justify-center mb-6 border border-primary-teal/10 group-hover:bg-primary-teal transition-all duration-500">

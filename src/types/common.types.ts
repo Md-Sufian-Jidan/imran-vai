@@ -129,3 +129,14 @@ export interface FAQ {
     question: string;
     answer: string;
 }
+
+export interface ContactPageStep {
+    icon: string;
+    title: string;
+    desc: string;
+}
+
+export interface ContactFaq {
+    question: string;
+    answer: string;
+}

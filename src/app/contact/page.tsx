@@ -1,23 +1,33 @@
-import ContactClient from "@/components/modules/contact/ContactClient";
 import { Metadata } from "next";
 
 const site_keywords = process.env.SITE_KEYWORDS
 
 export const metadata: Metadata = {
-    title: "Contact Md Abu Sufian Jidan | MERN Stack Developer for Hire",
-    description: "Have a project in mind? Get in touch with Md Abu Sufian Jidan, a professional MERN stack developer specializing in Next.js and React.",
-    keywords: site_keywords,
+    title: "Contact Apex Studio | Professional Photo Editing & Retouching Services",
+    description: "Get in touch with Apex Studio for high-quality clipping path, background removal, and photo retouching services. Fast turnaround and 24/7 support for photographers and e-commerce businesses.",
+    keywords: "photo editing contact, clipping path service, background removal, photo retouching studio, ecommerce photo editing",
     openGraph: {
-        title: "Contact Md Abu Sufian Jidan",
-        description: "Let's build something exceptional together.",
-        // images: ["/contact-og.png"], // Optional: Add a custom OG image
+        title: "Contact Apex Studio - Photo Editing Experts",
+        description: "Transform your images with professional retouching and clipping path services. Contact us today for a free trial.",
+        // images: ["/contact-og.png"],
     },
 };
 
-export default function Contact() {
+import SectionWrapper from "@/components/shared/SectionWrapper";
+import ContactHero from "@/components/modules/contact/ContactHero";
+import ContactFormSection from "@/components/modules/contact/ContactFormSection";
+import ContactFaq from "@/components/modules/contact/ContactFaq";
+import ContactMap from "@/components/modules/contact/ContactMap";
+
+export default function ContactPage() {
     return (
-        <div className="min-h-screen container mx-auto py-20 px-6">
-            <ContactClient />
-        </div>
+        <main className="bg-white min-h-screen">
+            <SectionWrapper containerClassName="px-0 md:px-6">
+                <ContactHero />
+                <ContactFormSection />
+                <ContactFaq />
+                <ContactMap />
+            </SectionWrapper>
+        </main>
     );
 }

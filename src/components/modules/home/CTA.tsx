@@ -15,7 +15,7 @@ const Orb = ({
     delay?: number;
 }) => (
     <motion.div
-        className={`absolute rounded-full blur-3xl pointer-events-none ${className}`}
+        className={`absolute rounded-xl blur-3xl pointer-events-none ${className}`}
         animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 6 + delay, repeat: Infinity, ease: "easeInOut", delay }}
         aria-hidden="true"
@@ -39,8 +39,8 @@ export default function CTA() {
     const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
     return (
-        <SectionWrapper className="bg-[#FAFAFA]" containerClassName="px-6">
-            <div ref={ref} className="relative rounded-3xl overflow-hidden border border-border bg-white shadow-sm">
+        <SectionWrapper className="bg-[#FAFAFA]" containerClassName="px-0 md:px-6">
+            <div ref={ref} className="relative rounded-xl overflow-hidden border border-border bg-white shadow-sm">
 
                 {/* ── Light Mesh gradient ── */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(24,124,139,0.08),transparent)]" />
@@ -82,7 +82,7 @@ export default function CTA() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary-teal/20 bg-primary-teal/5 text-primary-teal text-xs font-bold uppercase tracking-widest"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl border border-primary-teal/20 bg-primary-teal/5 text-primary-teal text-xs font-bold uppercase tracking-widest"
                     >
                         <Sparkles size={12} aria-hidden="true" />
                         Let&apos;s build together
@@ -150,7 +150,7 @@ export default function CTA() {
                             variant="default"
                             size="lg"
                             asChild
-                            className="group font-heading font-semibold text-base px-8 py-6 rounded-xl bg-primary-teal hover:bg-primary-teal/90 text-white shadow-lg shadow-primary-teal/10 transition-all duration-300"
+                            className="group h-12 px-8 rounded-xl font-bold text-base bg-black text-white shadow-lg shadow-black/10 hover:bg-primary-teal hover:shadow-xl hover:shadow-primary-teal/20 hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
                         >
                             <Link href="/contact">
                                 Start Your Project
@@ -165,7 +165,7 @@ export default function CTA() {
                             variant="ghost"
                             size="lg"
                             asChild
-                            className="font-heading font-medium text-base px-8 py-6 rounded-xl text-[#999999] hover:text-black hover:bg-black/5"
+                            className="h-12 px-6 rounded-xl font-bold border border-primary-teal bg-primary-foreground text-black hover:bg-primary-teal hover:text-white hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
                         >
                             <Link href="/portfolio">View Our Work</Link>
                         </Button>
@@ -186,12 +186,12 @@ export default function CTA() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.42 }}
-                        className="flex items-center gap-10 md:gap-16"
+                        className="flex md:flex-row flex-col items-center gap-5 md:gap-16"
                     >
                         <Stat value="50+" label="Projects" />
-                        <div className="w-px h-10 bg-border" aria-hidden="true" />
+                        <div className="w-px h-10 bg-primary-teal" aria-hidden="true" />
                         <Stat value="98%" label="Satisfaction" />
-                        <div className="w-px h-10 bg-border" aria-hidden="true" />
+                        <div className="w-px h-10 bg-primary-teal" aria-hidden="true" />
                         <Stat value="4× " label="Avg. ROI" />
                     </motion.div>
                 </div>

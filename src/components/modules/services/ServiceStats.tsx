@@ -7,7 +7,7 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 
 export default function ServiceStats() {
     return (
-        <SectionWrapper className="py-12 md:py-24 border-y border-border/40 bg-[#FAFAFA]">
+        <SectionWrapper className="py-12 md:py-24 border-y border-border/40 bg-[#FAFAFA]" containerClassName="px-0 md:px-6" >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                 {stats.map((stat, i) => (
                     <motion.div
@@ -17,7 +17,7 @@ export default function ServiceStats() {
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={fadeUp}
-                        className="group relative p-10 rounded-[2.5rem] border border-border bg-white transition-all duration-500 hover:border-primary-teal/30 hover:shadow-2xl hover:shadow-primary-teal/5"
+                        className="group relative p-10 rounded-xl border border-border bg-white transition-all duration-500 hover:border-primary-teal/30 hover:shadow-2xl hover:shadow-primary-teal/5"
                     >
                         {/* Top Decorative Dot - Primary Teal */}
                         <div

@@ -1,97 +1,119 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Scale, MessageSquare } from "lucide-react";
+import { Scale, MessageSquare, ArrowUpRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { termSections } from "@/lib/commonLinks";
 import { getIconComponent } from "@/lib/iconMapper";
+import SectionWrapper from "@/components/shared/SectionWrapper";
+import Link from "next/link";
 
 export default function TermsPage() {
-    const fadeUp = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-    };
-
     return (
-        <div className="min-h-screen bg-background py-32 px-6">
-            <div className="max-w-3xl mx-auto">
-                {/* Header */}
-                <motion.div
-                    variants={fadeUp}
-                    initial="initial"
-                    animate="animate"
-                    className="space-y-4 mb-16"
-                >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest">
-                        <Scale className="w-4 h-4" />
-                        Legal Framework
-                    </div>
-                    <h1 className="text-5xl md:text-6xl font-bold tracking-tighter">
-                        Terms & <span className="text-muted-foreground italic">Conditions</span>
-                    </h1>
-                    <p className="text-muted-foreground text-lg">
-                        Standard operating procedures for collaboration and site usage.
-                    </p>
-                </motion.div>
+        <div className="min-h-screen bg-white">
+            {/* ── Editorial Header ── */}
+            <header className="py-20 border-b border-border/50 bg-[#FAFAFA]">
+                <SectionWrapper>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end px-6"
+                    >
+                        <div className="lg:col-span-8">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-teal/10 border border-primary-teal/20 text-primary-teal text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+                                <Scale size={12} />
+                                Legal Framework
+                            </div>
+                            <h1 className="font-heading text-6xl md:text-8xl font-black text-black uppercase tracking-tighter leading-[0.85] mb-8">
+                                Terms & <br />
+                                <span className="text-[#999999] italic font-medium">Conditions</span>
+                            </h1>
+                        </div>
+                        <div className="lg:col-span-4 lg:border-l lg:border-border lg:pl-10 pb-2">
+                            <p className="text-[#999999] text-lg font-medium leading-relaxed">
+                                Standard operating procedures designed to ensure a seamless professional
+                                partnership and clear project boundaries.
+                            </p>
+                        </div>
+                    </motion.div>
+                </SectionWrapper>
+            </header>
 
-                <Separator className="mb-16" />
-
-                {/* Content Sections */}
-                <div className="space-y-12">
-                    {termSections.map((section, index) => {
-                        const Icon = getIconComponent(section.icon);
-                        return (
-                            (
+            {/* ── Content Grid ── */}
+            <SectionWrapper className="py-24" containerClassName="px-6">
+                <div className="max-w-5xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24">
+                        {termSections.map((section, index) => {
+                            const Icon = getIconComponent(section.icon);
+                            return (
                                 <motion.section
                                     key={section.title}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ delay: index * 0.05 }}
                                     className="group"
                                 >
-                                    <div className="flex items-start gap-4">
-                                        <div className="mt-1 w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                                            <Icon className="w-5 h-5" />
+                                    <div className="space-y-6">
+                                        <div className="flex items-center justify-between">
+                                            <div className="w-12 h-12 rounded-2xl bg-white border border-border flex items-center justify-center group-hover:border-primary-teal group-hover:shadow-lg group-hover:shadow-primary-teal/10 transition-all duration-500">
+                                                <Icon className="w-5 h-5 text-black group-hover:text-primary-teal transition-colors" />
+                                            </div>
+                                            <span className="text-[10px] font-black text-border group-hover:text-primary-teal/40 transition-colors">
+                                                0{index + 1}
+                                            </span>
                                         </div>
-                                        <div className="flex-1 space-y-3">
-                                            <h2 className="text-xl font-bold tracking-tight">{section.title}</h2>
-                                            <p className="text-muted-foreground leading-relaxed">
-                                                {section.content}
-                                            </p>
+
+                                        <h2 className="text-2xl font-black text-black uppercase tracking-tight">
+                                            {section.title}
+                                        </h2>
+
+                                        <p className="text-[#999999] text-base leading-relaxed font-medium">
+                                            {section.content}
+                                        </p>
+
+                                        <div className="pt-4 overflow-hidden">
+                                            <div className="h-px bg-border group-hover:bg-primary-teal transition-colors duration-500 origin-left" />
                                         </div>
                                     </div>
                                 </motion.section>
-                            )
-                        )
-                    })}
-                </div>
-
-                {/* Contact/Support Note */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    className="mt-24 p-8 rounded-3xl bg-primary text-primary-foreground flex flex-col md:flex-row items-center justify-between gap-6"
-                >
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                            <MessageSquare className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                            <h3 className="font-bold">Have questions?</h3>
-                            <p className="text-sm opacity-80">
-                                If you need clarification on any terms, feel free to ask.
-                            </p>
-                        </div>
+                            );
+                        })}
                     </div>
-                    <a
-                        href="/contact"
-                        className="px-6 py-2 bg-white text-primary rounded-full text-sm font-bold hover:bg-white/90 transition-colors"
+
+                    {/* ── Contact Call-to-Action ── */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="mt-32 p-12 rounded-[3rem] bg-black text-white flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden group"
                     >
-                        Contact Me
-                    </a>
-                </motion.div>
-            </div>
+                        {/* Background Decoration */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-teal/10 blur-[80px] rounded-full" />
+
+                        <div className="flex items-start gap-6 relative z-10">
+                            <div className="w-14 h-14 rounded-full bg-primary-teal flex items-center justify-center flex-shrink-0">
+                                <MessageSquare className="w-6 h-6 text-black" />
+                            </div>
+                            <div className="space-y-2">
+                                <h3 className="font-black text-2xl uppercase tracking-tighter">Need Clarification?</h3>
+                                <p className="text-white/50 font-medium max-w-sm">
+                                    Legal jargon can be complex. If any part of these terms is unclear,
+                                    I am happy to discuss them before we begin.
+                                </p>
+                            </div>
+                        </div>
+
+                        <Link
+                            href="/contact"
+                            className="relative z-10 px-10 py-5 bg-white text-black rounded-2xl text-xs font-black uppercase tracking-[0.2em] hover:bg-primary-teal transition-colors group/btn flex items-center gap-3"
+                        >
+                            Contact Me
+                            <ArrowUpRight size={16} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                        </Link>
+                    </motion.div>
+                </div>
+            </SectionWrapper>
         </div>
     );
 }

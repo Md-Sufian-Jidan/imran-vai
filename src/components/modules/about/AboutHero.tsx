@@ -8,7 +8,7 @@ import aboutHeroImg from "@/assets/images/hero-abstract.jpg"
 
 export default function AboutHero() {
     return (
-        <SectionWrapper className="pt-24 md:pt-32 lg:pt-40 bg-[#FAFAFA]" containerClassName="px-6">
+        <SectionWrapper className="pt-24 md:pt-32 lg:pt-40 bg-[#FAFAFA]" containerClassName="px-0 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                 {/* ── Left Content ── */}

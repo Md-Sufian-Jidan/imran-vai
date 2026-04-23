@@ -10,11 +10,11 @@ import ServiceHero from '@/components/modules/services/ServiceHero';
 const site_keywords = process.env.SITE_KEYWORDS
 
 export const metadata: Metadata = {
-    title: "Services | Md Abu Sufian Jidan | MERN Stack Developer for Hire",
-    description: "Have a project in mind? Get in touch with Md Abu Sufian Jidan, a professional MERN stack developer specializing in Next.js and React.",
+    title: "Services | Photoshop Editing, Graphic Design & More",
+    description: "Have a project in mind? Get in touch with ThePixelVerse, a professional in photography and graphic design.",
     keywords: site_keywords,
     openGraph: {
-        title: "Contact Md Abu Sufian Jidan",
+        title: "Contact ThePixelVerse",
         description: "Let's build something exceptional together.",
         images: ["/contact-og.png"], // Optional: Add a custom OG image
     },

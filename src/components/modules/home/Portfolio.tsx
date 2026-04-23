@@ -16,7 +16,7 @@ export default function Portfolio() {
             {/* Background Glows - Subtle Teal */}
             <div className="absolute top-1/2 left-0 w-1/4 h-1/2 bg-primary-teal/[0.03] blur-[120px] -z-10 rounded-full" />
 
-            <SectionWrapper containerClassName="px-6">
+            <SectionWrapper containerClassName="px-0 md:px-6">
                 <SectionHeading
                     label="Our Work"
                     title="Selected projects"
@@ -84,7 +84,7 @@ export default function Portfolio() {
                     <Button
                         asChild
                         variant="outline"
-                        className="h-14 px-10 rounded-full border-primary-teal/30 text-black hover:bg-primary-teal hover:text-white hover:border-primary-teal font-bold transition-all duration-300"
+                        className="group h-12 px-6 rounded-xl font-bold border border-primary-teal bg-primary-foreground text-black hover:bg-primary-teal hover:text-white hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
                     >
                         <Link href="/portfolio">
                             View All Projects

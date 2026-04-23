@@ -59,11 +59,11 @@ export default function HomeHero3() {
                         <motion.div variants={fadeUp} className="mb-7">
                             <Badge
                                 variant="secondary"
-                                className="inline-flex items-center gap-2 px-4 py-4 rounded-full text-sm font-semibold tracking-wide uppercase border border-primary-teal/20 bg-primary-teal/5 backdrop-blur-sm text-primary-teal"
+                                className="inline-flex items-center gap-2 md:px-4 px-2 py-4 rounded-xl text-sm font-semibold tracking-wide uppercase border border-primary-teal/20 bg-primary-teal/5 backdrop-blur-sm text-primary-teal"
                             >
-                                <span className="relative flex h- w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-teal opacity-60" />
-                                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-teal" />
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-xl bg-primary-teal opacity-60" />
+                                    <span className="relative inline-flex h-2 w-2 rounded-xl bg-primary-teal" />
                                 </span>
                                 Professional Photo Editing Services
                             </Badge>
@@ -115,7 +115,7 @@ export default function HomeHero3() {
                             {trust.map(({ icon: Icon, text }) => (
                                 <span
                                     key={text}
-                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-[#999999] border border-border bg-muted backdrop-blur-sm"
+                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-[#999999] border border-border bg-muted backdrop-blur-sm"
                                 >
                                     <Icon size={12} className="text-primary-teal" />
                                     {text}
@@ -127,7 +127,7 @@ export default function HomeHero3() {
                             <Button
                                 size="lg"
                                 asChild
-                                className="group h-14 px-8 rounded-2xl font-bold text-base bg-black text-white shadow-lg shadow-black/10 hover:bg-primary-teal hover:shadow-xl hover:shadow-primary-teal/20 hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
+                                className="group h-12 px-8 rounded-xl font-bold text-base bg-black text-white shadow-lg shadow-black/10 hover:bg-primary-teal hover:shadow-xl hover:shadow-primary-teal/20 hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
                             >
                                 <Link href="/contact">
                                     Get Free Trial
@@ -139,10 +139,10 @@ export default function HomeHero3() {
                                 variant="outline"
                                 size="lg"
                                 asChild
-                                className="group h-14 px-8 rounded-2xl font-bold text-base border-border bg-white text-black hover:bg-muted hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
+                                className="group h-12 px-6 rounded-xl font-bold border border-primary-teal bg-primary-foreground text-black hover:bg-primary-teal hover:text-white hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
                             >
                                 <Link href="/portfolio">
-                                    <span className="mr-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary-teal/10 text-primary-teal group-hover:bg-primary-teal/20 transition-colors">
+                                    <span className="mr-3 inline-flex h-8 w-8 items-center justify-center rounded-xl bg-primary-teal/10 text-primary-teal group-hover:bg-white transition-colors">
                                         <Play size={14} className="translate-x-0.5" />
                                     </span>
                                     View Portfolio
@@ -176,7 +176,7 @@ export default function HomeHero3() {
                         className="relative hidden lg:flex flex-col items-center gap-4"
                     >
                         {/* Teal glow halo behind slider */}
-                        <div className="absolute inset-0 -z-10 blur-3xl opacity-[0.07] bg-gradient-to-br from-primary-teal via-primary-teal/20 to-transparent rounded-3xl scale-110" />
+                        <div className="absolute inset-0 -z-10 blur-3xl opacity-[0.07] bg-gradient-to-br from-primary-teal via-primary-teal/20 to-transparent rounded-xl scale-110" />
 
                         <div className="w-full aspect-[4/5] max-h-[600px]">
                             <BeforeAfterSlider
@@ -189,8 +189,8 @@ export default function HomeHero3() {
 
                         <div className="flex items-center gap-2 text-xs text-[#999999] font-medium">
                             <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-teal opacity-60" />
-                                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-teal" />
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-xl bg-primary-teal opacity-60" />
+                                <span className="relative inline-flex h-2 w-2 rounded-xl bg-primary-teal" />
                             </span>
                             Drag the handle to reveal the difference
                         </div>

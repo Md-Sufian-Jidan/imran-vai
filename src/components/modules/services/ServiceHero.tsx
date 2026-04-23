@@ -12,7 +12,7 @@ export default function ServiceHero() {
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-teal/5 blur-[140px] -z-10 rounded-full" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-50 blur-[100px] -z-10 rounded-full" />
 
-            <SectionWrapper className="pt-32 pb-16 container mx-auto" containerClassName="px-6">
+            <SectionWrapper className="pt-32 pb-16 container mx-auto" containerClassName="px-0 md:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
                     {/* ── Left Column: Content (7 Cols) ── */}
@@ -45,7 +45,7 @@ export default function ServiceHero() {
                             <div className="flex flex-wrap items-center gap-6">
                                 <Link
                                     href="#services"
-                                    className="px-8 py-4 bg-black text-white rounded-full font-black text-xs uppercase tracking-widest hover:bg-primary-teal transition-all duration-300 flex items-center gap-3 group"
+                                    className="px-8 py-4 bg-black text-white rounded-xl font-black text-xs uppercase tracking-widest hover:bg-primary-teal transition-all duration-300 flex items-center gap-3 group"
                                 >
                                     Explore Services
                                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -88,8 +88,8 @@ export default function ServiceHero() {
                                     className="relative z-10 p-8 rounded-3xl bg-white/80 backdrop-blur-md border border-white/20 shadow-2xl"
                                 >
                                     <Zap className="text-primary-teal mb-4" size={32} fill="currentColor" />
-                                    <h3 className="text-black font-black text-2xl uppercase tracking-tighter mb-2">High Velocity <br />Development</h3>
-                                    <p className="text-[#999999] text-xs font-bold uppercase tracking-widest">Next.js • MERN • Tailwind</p>
+                                    <h3 className="text-black font-black text-2xl uppercase tracking-tighter mb-2">High Velocity <br />Photo Editing</h3>
+                                    <p className="text-[#999999] text-xs font-bold uppercase tracking-widest">PhotoShop • Adobe • Picsart</p>
                                 </motion.div>
 
                                 {/* Decorative floating tag */}

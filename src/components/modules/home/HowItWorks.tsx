@@ -28,7 +28,7 @@ export default function HowItWorks() {
                                 viewport={{ once: true }}
                                 variants={fadeUp}
                                 // Updated to light border and subtle muted background
-                                className="relative p-8 rounded-2xl border border-border bg-muted/30 backdrop-blur-sm hover:border-primary-teal/40 transition-all duration-500 group"
+                                className="relative p-8 rounded-xl border border-border bg-muted/30 backdrop-blur-sm hover:border-primary-teal/40 transition-all duration-500 group"
                             >
                                 {/* Step Icon Box - Teal Accents */}
                                 <div className="w-14 h-14 rounded-xl bg-primary-teal/10 flex items-center justify-center mb-6 group-hover:bg-primary-teal transition-all duration-300 shadow-[0_0_15px_rgba(24,124,139,0.05)] group-hover:shadow-[0_0_25px_rgba(24,124,139,0.3)]">
@@ -56,7 +56,7 @@ export default function HowItWorks() {
                                 </div>
 
                                 {/* Decorative Corner Glow - Teal */}
-                                <div className="absolute -right-2 -top-2 w-16 h-16 bg-primary-teal/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute -right-2 -top-2 w-16 h-16 bg-primary-teal/5 rounded-xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                             </motion.div>
                         )
                     })}

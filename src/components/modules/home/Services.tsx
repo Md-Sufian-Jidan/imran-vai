@@ -33,7 +33,7 @@ export default function Services() {
             <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-primary-teal/[0.03] blur-[120px] -z-10 rounded-full" />
             <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-primary-teal/[0.03] blur-[100px] -z-10 rounded-full" />
 
-            <SectionWrapper containerClassName="px-6">
+            <SectionWrapper containerClassName="px-0 md:px-6">
                 <SectionHeading
                     label="What We Do"
                     title="Services built for growth"

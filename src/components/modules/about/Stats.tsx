@@ -7,7 +7,7 @@ import { stats } from "@/lib/commonLinks";
 
 export default function Stats() {
     return (
-        <SectionWrapper className="py-12 md:py-20" containerClassName="px-6">
+        <SectionWrapper className="py-12 md:py-20" containerClassName="px-0 md:px-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                 {stats.map((stat, i) => (
                     <motion.div

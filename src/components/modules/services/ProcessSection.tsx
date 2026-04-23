@@ -71,7 +71,8 @@ export default function ProcessSection() {
                 viewport={{ once: true }}
                 className="mt-32 text-center"
             >
-                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-border bg-slate-50/50">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-teal/20 bg-primary-teal/5 text-primary-teal text-[10px] font-black uppercase tracking-[0.3em] mb-8"
+                >
                     <ShieldCheck size={18} className="text-primary-teal" />
                     <p className="text-black text-sm font-bold uppercase tracking-widest">
                         Guaranteed Quality at Every Stage

@@ -23,7 +23,7 @@ const memberVariants: Variants = {
 
 export default function Team() {
     return (
-        <SectionWrapper className="bg-[#FAFAFA]" containerClassName="px-6">
+        <SectionWrapper className="bg-[#FAFAFA]" containerClassName="px-0 md:px-6">
             <SectionHeading
                 label="The Architects"
                 title="The people behind the work"

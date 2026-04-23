@@ -84,7 +84,7 @@ export default function Testimonials() {
     };
 
     return (
-        <SectionWrapper className="bg-white" containerClassName="px-6">
+        <SectionWrapper className="bg-white" containerClassName="px-0 md:px-6">
             <SectionHeading
                 label="Testimonials"
                 title="What our clients say"
@@ -104,7 +104,7 @@ export default function Testimonials() {
                 aria-live="polite"
             >
                 {/* Card */}
-                <div className="overflow-hidden rounded-2xl select-none">
+                <div className="overflow-hidden rounded-xl select-none">
                     <AnimatePresence mode="wait" custom={direction}>
                         <motion.div
                             key={current}
@@ -114,7 +114,7 @@ export default function Testimonials() {
                             animate="center"
                             exit="exit"
                             transition={{ duration: 0.38, ease: [0.32, 0.72, 0, 1] }}
-                            className="bg-white border border-border rounded-2xl p-8 md:p-12 relative shadow-sm"
+                            className="bg-white border border-border rounded-xl p-8 md:p-12 relative shadow-sm"
                         >
                             {/* Decorative Quote - Primary Teal */}
                             <Quote
@@ -148,7 +148,7 @@ export default function Testimonials() {
                             <div className="flex items-center gap-4">
                                 {/* Avatar - Primary Teal Theme */}
                                 <div
-                                    className="w-11 h-11 rounded-full bg-primary-teal/10 border border-primary-teal/20 flex items-center justify-center shrink-0"
+                                    className="w-11 h-11 rounded-xl bg-primary-teal/10 border border-primary-teal/20 flex items-center justify-center shrink-0"
                                     aria-hidden="true"
                                 >
                                     <span className="font-heading font-semibold text-primary-teal text-sm">
@@ -181,7 +181,7 @@ export default function Testimonials() {
                                     "rounded-full transition-all duration-300",
                                     i === current
                                         ? "w-6 h-2 bg-primary-teal"
-                                        : "w-2 h-2 bg-muted-foreground/30 hover:bg-primary-teal/40"
+                                        : "w-2 h-2 bg-black hover:bg-primary-teal/40"
                                 )}
                             />
                         ))}

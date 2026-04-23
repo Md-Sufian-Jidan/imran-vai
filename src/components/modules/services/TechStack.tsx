@@ -39,24 +39,24 @@ const itemVariants: Variants = {
 export default function TechStack() {
     return (
         <section className="bg-white border-t border-border/50">
-            <SectionWrapper>
+            <SectionWrapper containerClassName="px-0 md:px-6">
                 <div className="flex flex-col lg:flex-row gap-16 items-start">
 
                     {/* ── Left Side: Content ── */}
                     <div className="w-full lg:w-1/3 sticky top-32">
                         <SectionHeading
-                            label="Our Engine"
-                            title="Modern tools for modern brands"
-                            description="We don't just build websites; we engineer high-performance digital engines using the latest industry-standard technologies."
+                            label="Our Tools"
+                            title="Professional software for pixel-perfect results"
+                            description="We use industry-leading photo editing software and tools to deliver high-quality, professional results that exceed client expectations."
                         />
 
-                        <div className="mt-8 p-6 rounded-2xl bg-primary-teal/5 border border-primary-teal/10">
+                        <div className="mt-8 p-6 rounded-xl bg-primary-teal/5 border border-primary-teal/10">
                             <p className="text-black text-sm font-bold uppercase tracking-widest mb-2">
-                                Performance First
+                                Quality First
                             </p>
                             <p className="text-[#999999] text-sm leading-relaxed font-medium">
-                                Every tool in our stack is chosen for speed, scalability, and
-                                seamless user experiences.
+                                Every tool in our arsenal is chosen for precision, quality, and
+                                delivering stunning visual results.
                             </p>
                         </div>
                     </div>
@@ -75,10 +75,10 @@ export default function TechStack() {
                                 <motion.div
                                     key={tech.name}
                                     variants={itemVariants}
-                                    className="group relative p-8 rounded-3xl border border-border bg-white transition-all duration-500 hover:border-primary-teal/40 hover:shadow-xl hover:shadow-primary-teal/5"
+                                    className="group relative p-8 rounded-xl border border-border bg-white transition-all duration-500 hover:border-primary-teal/40 hover:shadow-xl hover:shadow-primary-teal/5"
                                 >
                                     <div className="flex flex-col items-center text-center">
-                                        <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-2xl bg-slate-50 text-[#999999] group-hover:bg-primary-teal group-hover:text-white transition-all duration-500">
+                                        <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-slate-50 text-[#999999] group-hover:bg-primary-teal group-hover:text-white transition-all duration-500">
                                             <Icon size={24} strokeWidth={1.5} />
                                         </div>
 

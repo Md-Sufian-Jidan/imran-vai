@@ -4,78 +4,98 @@ import { motion } from "framer-motion";
 
 export default function Loading() {
     return (
-        <main className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#021a14] overflow-hidden">
+        <main className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black overflow-hidden font-sans">
             {/* Background Decorative Elements */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-[600px] pointer-events-none opacity-30">
-                {/* Large Emerald Glow */}
-                <div className="absolute top-0 right-0 w-96 h-96 bg-[#10b981]/20 rounded-full blur-[120px] animate-pulse" />
-                {/* Secondary Deep Forest Glow */}
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#10b981]/10 rounded-full blur-[120px]" />
+                {/* Brand Teal Glow */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#1fb1c1]/10 rounded-full blur-[120px] animate-pulse" />
+                {/* Secondary Soft Glow */}
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#1fb1c1]/5 rounded-full blur-[120px]" />
             </div>
 
-            <div className="relative z-10 flex flex-col items-center space-y-8">
-                {/* Branded Loader */}
+            <div className="relative z-10 flex flex-col items-center space-y-12">
+                {/* Modern Branded Loader */}
                 <div className="relative">
-                    {/* Outer Ring - Individual Dark Box */}
+                    {/* Outer Box - Glassmorphism style */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="relative w-24 h-24 bg-[#022c22]/40 border border-[#10b981]/20 rounded-2xl flex items-center justify-center shadow-2xl shadow-[#000]/40 backdrop-blur-md"
+                        className="relative w-28 h-28 bg-white/[0.03] border border-[#1fb1c1]/20 rounded-[2rem] flex items-center justify-center shadow-2xl shadow-black/50 backdrop-blur-xl overflow-hidden"
                     >
-                        {/* Pulsing Dots - Individual Emeralds */}
-                        <div className="flex gap-1.5">
+                        {/* Shimmering Scan Effect */}
+                        <motion.div
+                            animate={{ y: [-120, 120] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0 w-full h-1/2 bg-gradient-to-b from-transparent via-[#1fb1c1]/10 to-transparent pointer-events-none"
+                        />
+
+                        {/* Pulsing Dots - Primary Teal */}
+                        <div className="flex gap-2 relative z-10">
                             {[0, 1, 2].map((i) => (
                                 <motion.span
                                     key={i}
                                     animate={{
-                                        y: [0, -8, 0],
+                                        scale: [1, 1.4, 1],
                                         opacity: [0.3, 1, 0.3],
-                                        scale: [1, 1.2, 1],
+                                        backgroundColor: ["#1fb1c1", "#ffffff", "#1fb1c1"]
                                     }}
                                     transition={{
-                                        duration: 1,
+                                        duration: 1.2,
                                         repeat: Infinity,
                                         delay: i * 0.2,
                                         ease: "easeInOut",
                                     }}
-                                    className="w-2.5 h-2.5 rounded-full bg-[#10b981]"
-                                    style={{ boxShadow: '0 0 10px rgba(16, 185, 129, 0.5)' }}
+                                    className="w-2.5 h-2.5 rounded-full bg-[#1fb1c1]"
+                                    style={{ boxShadow: '0 0 15px rgba(31, 177, 193, 0.4)' }}
                                 />
                             ))}
                         </div>
 
-                        {/* Branded dot accent - Top Right Notification Style */}
-                        <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 rounded-full bg-[#10b981] border-2 border-[#021a14] shadow-[0_0_15px_rgba(16,185,129,0.4)]" />
+                        {/* Accent notification dot */}
+                        <span className="absolute top-4 right-4 w-2 h-2 rounded-full bg-[#1fb1c1] animate-ping" />
                     </motion.div>
 
-                    {/* Animated Spinner Background - Dashed Emerald */}
-                    <div
-                        className="absolute -inset-4 border border-[#10b981]/10 rounded-[2rem] animate-[spin_10s_linear_infinite]"
-                        style={{ borderStyle: 'dashed', borderWidth: '1px' }}
+                    {/* Rotating Tech Ring */}
+                    <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                        className="absolute -inset-6 border border-[#1fb1c1]/5 rounded-[3rem]"
+                        style={{ borderStyle: 'dashed', borderWidth: '1.5px' }}
                     />
                 </div>
 
-                {/* Messaging */}
-                <div className="text-center space-y-3">
-                    <p className="font-heading text-lg font-bold tracking-widest uppercase text-[#ecfdf5]/90">
-                        ThePixel<span className="text-[#10b981] italic">Verse</span>
-                    </p>
-                    <div className="flex items-center justify-center gap-2">
-                        <span className="h-px w-8 bg-[#10b981]/20" />
-                        <p className="text-xs font-medium text-[#ecfdf5]/50 uppercase tracking-[0.2em]">
-                            Crafting Excellence
+                {/* Brand Identity */}
+                <div className="text-center space-y-4">
+                    <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-xl font-black tracking-[0.3em] uppercase text-white"
+                    >
+                        THEPIXEL<span className="text-[#1fb1c1] italic">VERSE</span>
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="flex items-center justify-center gap-4"
+                    >
+                        <span className="h-px w-6 bg-white/10" />
+                        <p className="text-[10px] font-bold text-[#999999] uppercase tracking-[0.5em]">
+                            Initializing Interface
                         </p>
-                        <span className="h-px w-8 bg-[#10b981]/20" />
-                    </div>
+                        <span className="h-px w-6 bg-white/10" />
+                    </motion.div>
                 </div>
             </div>
 
-            {/* Decorative Grid Pattern Overlay - Emerald Dot Grid */}
+            {/* Subtle Teal Dot Grid */}
             <div
-                className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none"
+                className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
                 style={{
-                    backgroundImage: "radial-gradient(circle, #10b981 1px, transparent 1px)",
-                    backgroundSize: "32px 32px",
+                    backgroundImage: "radial-gradient(circle, #1fb1c1 1px, transparent 1px)",
+                    backgroundSize: "40px 40px",
                 }}
             />
         </main>

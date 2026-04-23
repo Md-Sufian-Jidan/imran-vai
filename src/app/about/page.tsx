@@ -1,5 +1,5 @@
 import AboutHero from "@/components/modules/about/AboutHero";
-import MissionVission from "@/components/modules/about/Mission&Vission";
+import MissionVision from "@/components/modules/about/Mission&Vision";
 import Stats from "@/components/modules/about/Stats";
 import Team from "@/components/modules/about/Team";
 import TeamPhoto from "@/components/modules/about/TeamPhoto";
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: "Have a project in mind? Get in touch with Md Abu Sufian Jidan, a professional MERN stack developer specializing in Next.js and React.",
     keywords: site_keywords,
     openGraph: {
-        title: "Contact Md Abu Sufian Jidan",
+        title: "Contact ThePixelVerse",
         description: "Let's build something exceptional together.",
         // images: ["/contact-og.png"], // Optional: Add a custom OG image
     },
@@ -25,7 +25,7 @@ const AboutPage = () => {
         <main>
             <AboutHero />
             <TeamPhoto />
-            <MissionVission />
+            <MissionVision />
             <WhyChooseUs />
             <Team />
             <Stats />

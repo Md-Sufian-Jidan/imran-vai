@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function TeamPhoto() {
     return (
         <section>
-            <SectionWrapper className="pt-0" containerClassName="px-6">
+            <SectionWrapper className="pt-0" containerClassName="px-0 md:px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}

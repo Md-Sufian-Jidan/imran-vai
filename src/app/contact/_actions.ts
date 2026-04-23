@@ -1,64 +1,56 @@
 "use server";
 
-import ContactThankYouEmail from "@/components/templates/ContactThankYouEmail";
-import { Resend } from "resend";
-import * as z from "zod";
+import nodemailer from "nodemailer";
+import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export type FormState = {
-    success?: boolean;
-    error?: string;
-    message?: string;
-};
-
-const formSchema = z.object({
-    name: z.string().min(1, "Please enter your name"),
-    email: z.string().email("Please enter a valid email address"),
-    message: z.string().min(5, "Message must be at least 5 characters"),
+// Re-using the schema for server-side validation (security best practice)
+const contactSchema = z.object({
+    name: z.string().min(2),
+    email: z.string().email(),
+    message: z.string().min(10),
 });
 
-export async function submitContactForm(
-    _prevState: FormState,
-    formData: FormData
-): Promise<FormState> {
+export async function sendMail(formData: z.infer<typeof contactSchema>) {
+    // 1. Validate the data on the server
+    const validatedFields = contactSchema.safeParse(formData);
+
+    if (!validatedFields.success) {
+        return { error: "Invalid form data" };
+    }
+
+    const { name, email, message } = validatedFields.data;
+
+    // 2. Configure Nodemailer (Use environment variables!)
+    const transporter = nodemailer.createTransport({
+        service: "gmail", // or your SMTP provider
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS, // Use an App Password if using Gmail
+        },
+    });
+
     try {
-        const rawData = Object.fromEntries(formData.entries());
-        const validatedFields = formSchema.safeParse(rawData);
-
-        if (!validatedFields.success) {
-            return {
-                success: false,
-                error: validatedFields.error.flatten().fieldErrors.email?.[0] ||
-                    validatedFields.error.flatten().fieldErrors.name?.[0] ||
-                    "Invalid form data",
-            };
-        }
-
-        const { name, email, message } = validatedFields.data;
-
-        const { error } = await resend.emails.send({
-            from: "onboarding@resend.dev",
-            to: [email],
-            subject: `Thank you for contacting me, ${name}`,
-            react: ContactThankYouEmail(),
+        const info = await transporter.sendMail({
+            from: `"${name}" <${email}>`, // sender address
+            to: process.env.RECEIVER_EMAIL, // your email
+            subject: `New Portfolio Message from ${name}`,
+            text: message,
+            html: `
+        <div style="font-family: sans-serif; color: #1d2d3d;">
+          <h2 style="color: #1fb1c1;">New Message Received</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <div style="background: #f9fafb; padding: 15px; border-radius: 10px; border: 1px solid #e5e7eb;">
+            ${message}
+          </div>
+        </div>
+      `,
         });
 
-        if (error) {
-            return {
-                success: false,
-                error: "Resend failed to deliver the email.",
-            };
-        }
-
-        return {
-            success: true,
-            message: "Success! I'll get back to you as soon as possible.",
-        };
-    } catch (err) {
-        return {
-            success: false,
-            error: "A server error occurred.",
-        };
+        return { messageId: info.messageId };
+    } catch (error) {
+        console.error("Nodemailer Error:", error);
+        return { error: "Failed to send email" };
     }
 }

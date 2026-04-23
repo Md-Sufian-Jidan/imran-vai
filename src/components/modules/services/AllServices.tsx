@@ -18,7 +18,7 @@ export default function AllServices() {
             {/* Subtle Grid Pattern Overlay */}
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] -z-20 opacity-20" />
 
-            <SectionWrapper className="pt-32 pb-20">
+            <SectionWrapper className="pt-32 pb-20" containerClassName="px-0 md:px-6">
                 <div className="flex flex-col items-center">
                     {/* ── Header Section ── */}
                     <motion.div

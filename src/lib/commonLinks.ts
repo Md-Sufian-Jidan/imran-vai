@@ -1,4 +1,4 @@
-import { Client, ContactInfo, FAQ, FooterLink, PricingFeature, PricingPlan, PricingTable, PrivacyInfo, ProcessStep, Project, Service, ServiceStep, ServiceTech, SocialLink, Stat, Steps, TeamMember, TermsInfo, Testimonial } from "@/types/common.types";
+import { Client, ContactFaq, ContactInfo, ContactPageStep, FAQ, FooterLink, PricingFeature, PricingPlan, PricingTable, PrivacyInfo, ProcessStep, Project, Service, ServiceStep, ServiceTech, SocialLink, Stat, Steps, TeamMember, TermsInfo, Testimonial } from "@/types/common.types";
 import projectMeridian from "../assets/images/project-meridian.jpg";
 import projectVolta from "../assets/images/project-volta.jpg";
 import projectLuminar from "../assets/images/project-luminar.jpg";
@@ -404,8 +404,7 @@ export const steps: Steps[] = [
     { icon: "Upload", step: "01", title: "Upload Your Images", desc: "Send us your unedited images through our easy upload form or free trial page." },
     { icon: "MessageSquare", step: "02", title: "Get Quick Reply", desc: "We respond to any queries in less than 15 minutes with a detailed quote." },
     { icon: "Download", step: "03", title: "Download Images", desc: "We'll deliver a better version of your photos exactly as you want them." },
-    { icon: "CreditCard", step: "04", title: "Make Payment", desc: "Pay after approval in your local currency — USD, Euro, GBP, CAD, AUD." },
-    { icon: "MessageSquare", step: "02", title: "Get Quick Reply", desc: "We respond to any queries in less than 15 minutes with a detailed quote." },
+    { icon: "CreditCard", step: "04", title: "Make Payment", desc: "Pay after approval in your local currency — USD, Euro, GBP, CAD, AUD." }
 ];
 
 export const serviceSteps: ServiceStep[] = [
@@ -454,8 +453,8 @@ export const values = [
 ];
 
 export const teamMembers: TeamMember[] = [
-    { name: "Imran Hossain", role: "Graphic Designer", designation: "CEO & Founder", initial: "IH", },
-    { name: "Md Abu Sufian Jidan", role: "Junior Web Developer", designation: "Software Engineer", initial: "SJ", },
+    { name: "Imran Hossain", role: "Lead Graphic Designer", designation: "CEO & Founder", initial: "IH", },
+    { name: "Md Abu Sufian Jidan", role: "Lead Web Developer", designation: "Software Engineer", initial: "SJ", },
     { name: "Sarah Jenkins", role: "UI/UX Designer", designation: "Product Lead", initial: "SJ", },
     { name: "Alex River", role: "MERN Stack Developer", designation: "Backend Engineer", initial: "AR", },
 ];
@@ -470,10 +469,10 @@ export const stats: Stat[] = [
 // Contact page data
 
 export const contactInfo: ContactInfo[] = [
-    { icon: "Mail", label: "Email", value: "hello@thepixelverse.com", href: "mailto:hello@thepixelverse.com", color: "bg-blue-500/10 text-blue-500" },
-    { icon: "Phone", label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567", color: "bg-green-500/10 text-green-500" },
+    { icon: "Mail", label: "Email", value: "support@apexstudio.co", href: "mailto:support@apexstudio.co", color: "bg-blue-500/10 text-blue-500" },
+    { icon: "Phone", label: "Phone", value: "+880 1700 000000", href: "tel:+8801700000000", color: "bg-green-500/10 text-green-500" },
     {
-        icon: "MapPin", label: "Location", value: "San Francisco, CA", href: "https://maps.google.com/?q=San+Francisco,CA",
+        icon: "MapPin", label: "Location", value: "Narayanganj, Bangladesh", href: "https://maps.google.com/?q=Narayanganj,Bangladesh",
         color: "bg-purple-500/10 text-purple-500"
     },
 ];
@@ -551,14 +550,14 @@ export const termSections: TermsInfo[] = [
 ];
 
 export const serviceTechnologies: ServiceTech[] = [
-    { name: "Next.js", category: "Frontend", icon: "Globe" },
-    { name: "React", category: "Library", icon: "Layers" },
-    { name: "Node.js", category: "Backend", icon: "Cpu" },
-    { name: "MongoDB", category: "Database", icon: "Database" },
-    { name: "TypeScript", category: "Language", icon: "Code2" },
-    { name: "Tailwind CSS", category: "Styling", icon: "Zap" },
-    { name: "Prisma", category: "ORM", icon: "Infinity" },
-    { name: "Framer Motion", category: "Animation", icon: "Smartphone" },
+    { name: "Adobe Photoshop", category: "Editing Software", icon: "Globe" },
+    { name: "Adobe Lightroom", category: "Photo Management", icon: "Layers" },
+    { name: "Adobe Illustrator", category: "Vector Graphics", icon: "Cpu" },
+    { name: "GIMP", category: "Open Source Editor", icon: "Database" },
+    { name: "Affinity Photo", category: "Professional Tools", icon: "Code2" },
+    { name: "Capture One", category: "RAW Processing", icon: "Zap" },
+    { name: "DaVinci Resolve", category: "Color Grading", icon: "Infinity" },
+    { name: "Wacom Tablets", category: "Hardware", icon: "Smartphone" },
 ];
 
 export const faqs: FAQ[] = [
@@ -578,4 +577,18 @@ export const faqs: FAQ[] = [
         question: "Can you work with my existing brand guidelines?",
         answer: "We love collaborating with established brands. Our design team will strictly follow your existing style guides while looking for ways to elevate the digital experience."
     }
+];
+
+export const contactPageSteps: ContactPageStep[] = [
+    { icon: "Upload", title: "Send Your Images", desc: "Upload your raw photos via our secure portal or FTP for a free trial or project quote." },
+    { icon: "ClipboardCheck", title: "Get a Quote", desc: "Receive a detailed price estimate and turnaround time within 30-60 minutes." },
+    { icon: "Zap", title: "Fast Delivery", desc: "Get your edited images back in as little as 12-24 hours with 100% quality assurance." },
+];
+
+export const contactFaqs: ContactFaq[] = [
+    { question: "Do you sign NDAs?", answer: "Yes, I am happy to sign non-disclosure agreements before discussing sensitive project details." },
+    { question: "What is your typical project lead time?", answer: "Depending on complexity, most MERN projects take 4-8 weeks to launch." },
+    { question: "Are you open to full-time roles?", answer: "I am currently prioritizing contract work, but I'm open to discussing long-term partnerships." },
+    { question: "How long does a typical project take?", answer: "Timeline varies depending on complexity. A standard landing page takes 2-3 weeks, while a full-scale MERN stack application typically spans 6-10 weeks from discovery to launch." }, { question: "Do you provide post-launch support?", answer: "Yes, we offer flexible maintenance packages. Whether it's security updates, performance optimization, or adding new features, we ensure your digital product stays ahead of the curve." }, { question: "Will my website be SEO friendly?", answer: "Absolutely. We build with Next.js which provides superior SSR (Server Side Rendering) capabilities. Combined with clean semantic HTML and optimized metadata, your site is built to rank." },
+    { question: "Can you work with my existing brand guidelines?", answer: "We love collaborating with established brands. Our design team will strictly follow your existing style guides while looking for ways to elevate the digital experience." }
 ];

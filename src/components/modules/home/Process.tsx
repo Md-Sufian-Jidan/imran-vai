@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 export default function Process() {
     return (
         <section className="bg-[#FAFAFA]">
-            <SectionWrapper containerClassName="px-6">
+            <SectionWrapper containerClassName="px-0 md:px-6">
                 <SectionHeading
                     label="Our Process"
                     title="How we bring ideas to life"
@@ -26,7 +26,7 @@ export default function Process() {
                             viewport={{ once: true }}
                             variants={fadeUp}
                             whileHover={{ y: -5 }}
-                            className="group relative p-8 rounded-2xl border border-border bg-white transition-all duration-300 hover:border-primary-teal/30 hover:shadow-[0_20px_50px_-20px_rgba(24,124,139,0.1)]"
+                            className="group relative p-8 rounded-xl border border-border bg-white transition-all duration-300 hover:border-primary-teal/30 hover:shadow-[0_20px_50px_-20px_rgba(24,124,139,0.1)]"
                         >
                             {/* Step Number - Primary Teal with Low Opacity */}
                             <span className="text-6xl font-heading font-black text-primary-teal/10 group-hover:text-primary-teal/20 block mb-6 transition-colors duration-300">
@@ -44,7 +44,7 @@ export default function Process() {
                             </p>
 
                             {/* Decorative Bottom Line - Primary Teal */}
-                            <div className="absolute bottom-0 left-8 right-8 h-[2px] bg-transparent group-hover:bg-primary-teal/40 transition-all duration-500 rounded-full" />
+                            <div className="absolute bottom-0 left-8 right-8 h-[2px] bg-transparent group-hover:bg-primary-teal/40 transition-all duration-500 rounded-xl" />
                         </motion.div>
                     ))}
                 </div>
