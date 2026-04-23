@@ -9,8 +9,10 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Contact Apex Studio - Photo Editing Experts",
         description: "Transform your images with professional retouching and clipping path services. Contact us today for a free trial.",
-        // images: ["/contact-og.png"],
     },
+    alternates: {
+        canonical: "https://thepixelverse.com/contact",
+    }
 };
 
 import SectionWrapper from "@/components/shared/SectionWrapper";
